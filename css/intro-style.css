@@ -1,0 +1,55 @@
+
+
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 50px;
+  color: #b62e2e;
+  text-align: center;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 25px 50px 75px;
+}
+
+
+.story-paragraph {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 25px;
+  color: #6b0505;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  line-height: 1.5;
+  padding: 25px 50px 75px;
+}
+
+
+#nameForm {
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+
+button {
+  font-family: 'Cinzel Decorative', serif;
+  background-color: #780808;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+.character-image {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+
+}
+
+.character-image img {
+  padding-bottom: 35px;
+}
+
