@@ -4,3 +4,11 @@ An interactive, browser-based, point and click / text based, whodunit murder mys
 ## Project Authors
 
 Jennifer Sung, Aaron Clark, and Dylan Cooper
+
+## Wireframes
+
+![Wireframes](img/wireframes.png)
+
+## Domain Model
+
+![Domain Model](img/domain-model.png)
