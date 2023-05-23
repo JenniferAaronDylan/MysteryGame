@@ -1,17 +1,79 @@
 
 'use strict'
 
+// Globals
+const user = getUser();
+const mainBackground = document.querySelector('main');
+const claraDiv = document.getElementById('clara');
+const detectiveDiv= document.getElementById('detective');
+const assistantDiv = document.getElementById('assistant');
+
+let clara = false;
+
+claraDiv.addEventListener('click', claraClick)
+
 // User Constructor
 // To Do.  In submission handler for username, check local storage.  If username exists, start game from previous state.
 
-function User(username){
-  this.username = username;
+function User(userName){
+  this.userName = userName;
   this.Clara = false;
   this.Marguerite = false;
   this.Alexander = false;
   this.Jonathan = false;
   this.Wallace = false;
   this.Leonard = false;
+}
+
+User.prototype.updateLocalStorage = function() {
+  
+  let stringifiedUser = JSON.stringify(this);
+  localStorage.setItem('currentUser', stringifiedUser);
+
+}
+
+// Pull user info from local storage
+function getUser() {
+  let retrievedUser = localStorage.getItem('currentUser');
+  let parsedUser = JSON.parse(retrievedUser);
+  return parsedUser;
+
+}
+
+// Character click transitions
+function hideImages(except) {
+  const imageContainers = document.querySelectorAll('main > div.base-state');
+  imageContainers.forEach((container) => {
+    if (container.id !== except && container.id !== 'detective' && container.id !== 'assistant') {
+      container.classList.add('hidden');
+    }
+  });
+}
+
+function revertChanges() {
+  // Show all hidden images
+  const imageContainers = document.querySelectorAll('main > div');
+  imageContainers.forEach((container) => {
+    container.classList.remove('hidden');
+  });
+}
+
+function claraClick() {
+  if (clara === false) {
+    mainBackground.style.backgroundImage = 'url("../img/airship 2.png")';
+    claraDiv.style.gridArea = '2 / 2 / 3 / 3';
+    hideImages('clara');
+    detectiveDiv.classList.remove('hidden');
+    assistantDiv.classList.remove('hidden');
+    clara = true;
+  } else {
+    mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
+    claraDiv.style.gridArea = '2 / 1 / 3 / 2';
+    revertChanges();
+    detectiveDiv.classList.add('hidden');
+    assistantDiv.classList.add('hidden');
+    claraDiv.removeEventListener('click', claraClick);
+  }
 }
 
 
@@ -124,7 +186,7 @@ const claraDeveraux = {
   
   evidence: 'Found paint stains on her dress that match the color palette of the stolen painting.',
   additionalEvidence: 'A sketch of the stolen painting was found in her sketchbook, suggesting she had a keen interest in it.',
-  let conversation = "";
+  let conversation = "",
 
 conversation += "Player: Can you explain the paint stains on your dress?\n";
 conversation += "Clara: Those paint stains? It's from my recent art project. No connection to the stolen painting, I assure you.\n";
