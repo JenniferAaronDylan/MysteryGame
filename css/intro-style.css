@@ -1,6 +1,4 @@
 
-
-
 h1 {
   font-family: 'Playfair Display', serif;
   font-size: 50px;
@@ -56,4 +54,26 @@ button {
   max-width: 100%;
   height: auto;
 }
+
+
+
+
+.detec-character-image {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 20px;
+  padding: 20px 100px;
+  justify-content: space-between;
+}
+
+.detec-image-container {
+  width: 100%;
+}
+
+.detec-character-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+
 
