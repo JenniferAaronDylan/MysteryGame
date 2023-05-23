@@ -193,7 +193,7 @@ const claraDeveraux = {
   
     displayNextLine();
   },
-
+}
 // natural speech pattern generator
 
 
