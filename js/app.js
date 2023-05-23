@@ -243,3 +243,14 @@ accuseClaraButton.addEventListener('click', function() {
   claraDeveraux.updateAccusationStatus(true);
 });
 
+
+
+
+
+
+
+
+
+
+
+
