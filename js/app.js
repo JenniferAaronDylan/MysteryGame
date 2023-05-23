@@ -1,17 +1,35 @@
 
 'use strict'
 
+// Globals
+const user = getUser();
+
 // User Constructor
 // To Do.  In submission handler for username, check local storage.  If username exists, start game from previous state.
 
-function User(username){
-  this.username = username;
+function User(userName){
+  this.userName = userName;
   this.Clara = false;
   this.Marguerite = false;
   this.Alexander = false;
   this.Jonathan = false;
   this.Wallace = false;
   this.Leonard = false;
+}
+
+User.prototype.updateLocalStorage = function() {
+  
+  let stringifiedUser = JSON.stringify(this);
+  localStorage.setItem('currentUser', stringifiedUser);
+
+}
+
+// Pull user info from local storage
+function getUser() {
+  let retrievedUser = localStorage.getItem('currentUser');
+  let parsedUser = JSON.parse(retrievedUser);
+  return parsedUser;
+
 }
 
 
@@ -124,7 +142,7 @@ const claraDeveraux = {
   
   evidence: 'Found paint stains on her dress that match the color palette of the stolen painting.',
   additionalEvidence: 'A sketch of the stolen painting was found in her sketchbook, suggesting she had a keen interest in it.',
-  let conversation = "";
+  let conversation = "",
 
 conversation += "Player: Can you explain the paint stains on your dress?\n";
 conversation += "Clara: Those paint stains? It's from my recent art project. No connection to the stolen painting, I assure you.\n";
