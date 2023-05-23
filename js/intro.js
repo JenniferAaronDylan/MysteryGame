@@ -22,8 +22,16 @@ function userNameInput() {
   let nameInput = document.getElementById("nameInput");
   let userName = nameInput.value;
 
-  localStorage.setItem("playerUserName", userName);
-
+  // localStorage.setItem("playerUserName", userName);
+  let newUser = new User(userName);
+  let prevUser = getUser();
+  if (prevUser){
+    if (prevUser.userName !== newUser.userName){
+      newUser.updateLocalStorage();
+    }
+  } else {
+    newUser.updateLocalStorage();
+  }
 }
 
 function initializeForm() {
