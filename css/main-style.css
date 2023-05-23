@@ -44,6 +44,15 @@ main {
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position:center;
+  transition: background-image 1s ease-in-out;
+}
+
+.base-state {
+  display:inline-block
+}
+
+.hidden {
+  display: none;
 }
 
 #clara {
@@ -78,6 +87,18 @@ main {
 
 #leonard {
   grid-area: 2 / 6 / 3 / 7;
+  justify-self: center;
+  width: 1fr;
+}
+
+#detective {
+  grid-area: 2 / 3 / 3 / 4;
+  justify-self: center;
+  width: 1fr;
+}
+
+#assistant {
+  grid-area: 2 / 4 / 3 / 5;
   justify-self: center;
   width: 1fr;
 }
