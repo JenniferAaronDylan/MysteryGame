@@ -5,12 +5,27 @@
 const user = getUser();
 const mainBackground = document.querySelector('main');
 const claraDiv = document.getElementById('clara');
+const margueriteDiv = document.getElementById('marguerite');
+const alexanderDiv = document.getElementById('alexander');
+const jonathanDiv = document.getElementById('jonathan');
+const wallaceDiv = document.getElementById('wallace');
+const leonardDiv = document.getElementById('leonard');
 const detectiveDiv= document.getElementById('detective');
 const assistantDiv = document.getElementById('assistant');
 
 let clara = false;
+let marguerite = false;
+let alexander = false;
+let jonathan = false;
+let wallace = false;
+let leonard = false;
 
 claraDiv.addEventListener('click', claraClick)
+margueriteDiv.addEventListener('click', margueriteClick)
+alexanderDiv.addEventListener('click', alexanderClick)
+jonathanDiv.addEventListener('click', jonathanClick)
+wallaceDiv.addEventListener('click', wallaceClick)
+leonardDiv.addEventListener('click', leonardClick)
 
 // User Constructor
 // To Do.  In submission handler for username, check local storage.  If username exists, start game from previous state.
@@ -76,49 +91,95 @@ function claraClick() {
   }
 }
 
+function margueriteClick() {
+  if (marguerite === false) {
+    mainBackground.style.backgroundImage = 'url("../img/airship 3.png")';
+    margueriteDiv.style.gridArea = '2 / 2 / 3 / 3';
+    hideImages('marguerite');
+    detectiveDiv.classList.remove('hidden');
+    assistantDiv.classList.remove('hidden');
+    marguerite = true;
+  } else {
+    mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
+    margueriteDiv.style.gridArea = '2 / 2 / 3 / 3';
+    revertChanges();
+    detectiveDiv.classList.add('hidden');
+    assistantDiv.classList.add('hidden');
+    margueriteDiv.removeEventListener('click', margueriteClick);
+  }
+}
 
+function alexanderClick() {
+  if (alexander === false) {
+    mainBackground.style.backgroundImage = 'url("../img/airship 4.png")';
+    alexanderDiv.style.gridArea = '2 / 2 / 3 / 3';
+    hideImages('alexander');
+    detectiveDiv.classList.remove('hidden');
+    assistantDiv.classList.remove('hidden');
+    alexander = true;
+  } else {
+    mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
+    alexanderDiv.style.gridArea = '2 / 3 / 3 / 4';
+    revertChanges();
+    detectiveDiv.classList.add('hidden');
+    assistantDiv.classList.add('hidden');
+    alexanderDiv.removeEventListener('click', alexanderClick);
+  }
+}
 
+function jonathanClick() {
+  if (jonathan === false) {
+    mainBackground.style.backgroundImage = 'url("../img/airship 5.png")';
+    jonathanDiv.style.gridArea = '2 / 2 / 3 / 3';
+    hideImages('jonathan');
+    detectiveDiv.classList.remove('hidden');
+    assistantDiv.classList.remove('hidden');
+    jonathan = true;
+  } else {
+    mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
+    jonathanDiv.style.gridArea = '2 / 4 / 3 / 5';
+    revertChanges();
+    detectiveDiv.classList.add('hidden');
+    assistantDiv.classList.add('hidden');
+    jonathanDiv.removeEventListener('click', jonathanClick);
+  }
+}
 
+function wallaceClick() {
+  if (wallace === false) {
+    mainBackground.style.backgroundImage = 'url("../img/airship 6.png")';
+    wallaceDiv.style.gridArea = '2 / 2 / 3 / 3';
+    hideImages('wallace');
+    detectiveDiv.classList.remove('hidden');
+    assistantDiv.classList.remove('hidden');
+    wallace = true;
+  } else {
+    mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
+    wallaceDiv.style.gridArea = '2 / 5 / 3 / 6';
+    revertChanges();
+    detectiveDiv.classList.add('hidden');
+    assistantDiv.classList.add('hidden');
+    wallaceDiv.removeEventListener('click', wallaceClick);
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function leonardClick() {
+  if (leonard === false) {
+    mainBackground.style.backgroundImage = 'url("../img/airship 7.png")';
+    leonardDiv.style.gridArea = '2 / 2 / 3 / 3';
+    hideImages('leonard');
+    detectiveDiv.classList.remove('hidden');
+    assistantDiv.classList.remove('hidden');
+    leonard = true;
+  } else {
+    mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
+    leonardDiv.style.gridArea = '2 / 6 / 3 / 7';
+    revertChanges();
+    detectiveDiv.classList.add('hidden');
+    assistantDiv.classList.add('hidden');
+    leonardDiv.removeEventListener('click', leonardClick);
+  }
+}
 
 
 
@@ -179,28 +240,10 @@ const claraDeveraux = {
   lastName: 'Deveraux',
   fullName: 'Clara Deveraux',
   role: 'Disgruntled Artist',
-  image: '/img/clara.png',
-  assistantNotes: true,
-  evidenceUpdate: false,
-  evidenceNotesUpdate: false,
-  alibiUpdate: false,
-  alibiNotesUpdate: false,
-  accusationMade: false,
-  
+  image: '../img/clara.png',
 
   evidence: 'Found paint chips on her dress that match the color palette of the stolen painting.',
   additionalEvidence: 'Clearly disgruntled by my interview, the paint chips are allegedly from a piece she did to network herself more commissions. There is also a sketch of the stolen painting found in her sketchbook, suggesting she had a keen interest in it, but enough of an interest to steal it? Her resentment toward Van Dyke is palpable, but her artistic admiration for the stolen painting makes her involvement in its theft implausible.',
-
-  evidence: 'Found paint stains on her dress that match the color palette of the stolen painting.',
-  additionalEvidence: 'A sketch of the stolen painting was found in her sketchbook, suggesting she had a keen interest in it.',
-  let conversation = "",
-
-conversation += "Player: Can you explain the paint stains on your dress?\n";
-conversation += "Clara: Those paint stains? It's from my recent art project. No connection to the stolen painting, I assure you.\n";
-conversation += "Player: I also found a sketch of the stolen painting in your sketchbook. Care to explain?\n";
-conversation += "Clara: Ah, that sketch. It's just an artistic study. I'm fascinated by the painting, but I had no involvement in its theft.\n";
-
-staging
 
   alibi: 'Was seen in the dining area before the estimated time of the murder, but not eating.',
   additionalAlibi: 'She claims she was at the dinner party until near midnight then retired to her room, naming the Steward as an alibi. My assistant interviewed him and he corroborates her story. She noted that he seemed honest, and we have no reason at this time to believe he\'s being untruthful. She left me with a cryptic warning as I left, she may know more than she\'s leading on.',
@@ -208,19 +251,7 @@ staging
   assistantNotes: 'Clara held a grudge against Van Dyke for trying to ruin her career. Is that enough of a motive? And does she have a strong alibi?',
 
   accusationExplanation: 'Clara\'s resentment towards Van is clear, and her interest in the painting is undeniable. However, she has a strong alibi. The steward vouches for her presence in her quarters during the estimated time of the murder. As well as her passion for art which seems more towards creation rather than destruction or theft. Her guilt is highly unlikely.',
-  
-  unlockResponse: function(question) {
-    if (question === 'askForAlibi') {
-      this.alibiUpdate = true;
-    } else if (question === 'searchForEvidence') {
-      this.evidenceUpdate = true;
-    }
-  },
-  updateAccusationStatus: function(accused) {
-    if (accused) {
-      this.accusationMade = true;
-    }
-  },
+
   evidenceConversation: [
     'Good morning, Miss Deveraux, do you mind if I asked you some questions, maybe take a look around your quarters? I\'m sure you\'ve heard about what happened last night.',
     'I did hear, what a tragic loss. And certainly, make yourself at home, it seems you\'re going to regardless.',
@@ -243,6 +274,8 @@ staging
     'Thank you for your cooperation, Miss Deveraux.',
     'I don\'t think this clears me of any suspicion, does it?... Leonard Van Dyke is hardly the man he portrays to everyone else. I\'m sure you\'ll see that soon enough.',
   ],
+
+  // Displays the conversation based on the question asked
   displayConversation: function(conversation) {
     const playerSpeechElement = document.getElementById('playerSpeech');
     const characterSpeechElement = document.getElementById('characterSpeech');
@@ -250,27 +283,26 @@ staging
     characterSpeechElement.textContent = '';
   
     let index = 0;
-    const displayNextLine = () => {
+  
+    function displayNextLine() {
       if (index < conversation.length) {
-        const line = conversation[index];
-        const speaker = line.split(':')[0].trim();
-        const speech = line.split(':')[1].trim();
-        if (speaker === 'Player') {
-          playerSpeechElement.textContent += speech + ' ';
+        if (index % 2 === 0) {
+          playerSpeechElement.textContent += conversation[index];
         } else {
-          characterSpeechElement.textContent += speech + ' ';
+          characterSpeechElement.textContent += conversation[index];
         }
         index++;
-        setTimeout(displayNextLine, getRandomDelay()); // Adjust the delay time as needed
+        setTimeout(displayNextLine, getRandomDelay());
       }
-    };
-  
+    }
     displayNextLine();
   },
+};
+
+// Natural speech pattern generator
+function getRandomDelay() {
+  return Math.floor(Math.random() * 1000) + 500;
 }
-// natural speech pattern generator
-
-
 
 // Clara HTML Buttons
 <div>
