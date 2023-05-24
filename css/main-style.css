@@ -70,7 +70,38 @@ main {
 
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+#characterSpeech {
+  width:2fr;
+  height:100%;
+  background-color:red;
+  color: black;
+  grid-area: 1 / 2 / 2 / 4;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+    
+}
+
+#playerSpeech {
+  width:2fr;
+  height:100%;
+  background-color:blue;
+  color: black;
+  grid-area: 1 / 4 / 2 / 6;
+  display:flex;
+  align-items: center;
+  justify-content:center;
+}
+
+.speech-bubble {
+  position: relative;
+  display: inline-block;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  padding: 10px;
 }
 
 #clara {
@@ -110,13 +141,13 @@ main {
 }
 
 #detective {
-  grid-area: 2 / 3 / 3 / 4;
+  grid-area: 2 / 5 / 3 / 6;
   justify-self: center;
   width: 1fr;
 }
 
 #assistant {
-  grid-area: 2 / 4 / 3 / 5;
+  grid-area: 2 / 6 / 3 / 7;
   justify-self: center;
   width: 1fr;
 }
