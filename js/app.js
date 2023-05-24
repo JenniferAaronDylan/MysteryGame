@@ -340,3 +340,73 @@ document.getElementById('searchForEvidenceButton').addEventListener('click', fun
   claraDeveraux.displayConversation(claraDeveraux.evidenceConversation);
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+// CHECKING TO SEE IF LOGBOOK CODE WORKS - Jen
+//END OF CHARACTER OBJECTS
+
+// Clara's evidence
+function displayClaraEvidence() {
+  let logbookClara = document.getElementById('logbookClara');
+  let evidenceList = document.createElement('ul');
+  let evidenceItem1 = document.createElement('li');
+  let evidenceItem2 = document.createElement('li');
+
+  evidenceItem1.textContent = claraDeveraux.evidence;
+  evidenceItem2.textContent = claraDeveraux.additionalEvidence;
+
+  evidenceList.appendChild(evidenceItem1);
+  evidenceList.appendChild(evidenceItem2);
+
+  logbookClara.innerHTML = '';
+  logbookClara.appendChild(evidenceList);
+  logbookClara.classList.remove('hidden');
+}
+
+// logbook button for clara
+// let logbookButton = document.getElementById('logbook');
+// logbookButton.addEventListener('click', displayClaraEvidence);
+
+// let askForAlibiButton = document.getElementById('askForAlibi');
+
+// askForAlibiButton.addEventListener('click', function() {
+//   let alibiText = claraDeveraux.alibi;
+//   let additionalAlibiText = claraDeveraux.additionalAlibi;
+
+//   console.log(alibiText);
+//   console.log(additionalAlibiText);
+// });
+
+
+
+// logbook button for Clara
+let logbookButton = document.getElementById('logbook');
+logbookButton.addEventListener('click', displayClaraEvidence);
+
+// Ask for Alibi button
+let askForAlibiButton = document.getElementById('askForAlibi');
+askForAlibiButton.addEventListener('click', function() {
+  claraDeveraux.unlockResponse('askForAlibi');
+});
+
+// Search for Evidence button
+let searchForEvidenceButton = document.getElementById('searchForEvidence');
+searchForEvidenceButton.addEventListener('click', function() {
+  claraDeveraux.unlockResponse('searchForEvidence');
+});
+
+
+
+
+
+
