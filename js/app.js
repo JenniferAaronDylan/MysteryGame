@@ -232,7 +232,6 @@ function leonardClick() {
 
 
 
-
 // Character Objects
 
 const claraDeveraux = {

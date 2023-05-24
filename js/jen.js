@@ -103,6 +103,9 @@ function closeContainer() {
 
 
 
+
+
+
 // END OF CHARACTER OBJECTS
 
 // Clara's evidence
@@ -170,6 +173,12 @@ searchForEvidenceButton.addEventListener('click', function() {
 
 
 // // Character Objects
+
+
+
+
+// // Character Objects
+
 
 // const claraDeveraux = {
 //   name: 'Clara Deveraux',
