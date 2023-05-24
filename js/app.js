@@ -38,11 +38,11 @@ jonathanDiv.addEventListener('click', jonathanClick)
 wallaceDiv.addEventListener('click', wallaceClick)
 leonardDiv.addEventListener('click', leonardClick)
 accuseClara.addEventListener('click', claraAccusation);
-// accuseMarguerite.addEventListener('click', margueriteAccusation);
-// accuseAlexander.addEventListener('click', alexanderAccusation);
-// accuseJonathan.addEventListener('click', jonathanAccusation);
-// accuseWallace.addEventListener('click', wallaceAccusation);
-// accuseLeonard.addEventListener('click', leonardAccusation);
+accuseMarguerite.addEventListener('click', margueriteAccusation);
+accuseAlexander.addEventListener('click', alexanderAccusation);
+accuseJonathan.addEventListener('click', jonathanAccusation);
+accuseWallace.addEventListener('click', wallaceAccusation);
+accuseLeonard.addEventListener('click', leonardAccusation);
 
 // User Constructor
 // To Do.  In submission handler for username, check local storage.  If username exists, start game from previous state.
@@ -130,6 +130,7 @@ function claraClick() {
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
     accuseDiv.classList.remove('hidden');
+    clara = false;
   }
 }
 
@@ -145,7 +146,11 @@ function margueriteClick() {
     marguerite = true;
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.add('hidden');
   } else {
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     margueriteDiv.style.gridArea = '2 / 2 / 3 / 3';
     revertChanges();
@@ -156,6 +161,8 @@ function margueriteClick() {
     margueriteDiv.removeEventListener('click', margueriteClick);
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.remove('hidden');
+    marguerite = false;
   }
 }
 
@@ -171,7 +178,11 @@ function alexanderClick() {
     alexander = true;
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.add('hidden');
   } else {
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     alexanderDiv.style.gridArea = '2 / 3 / 3 / 4';
     revertChanges();
@@ -182,6 +193,8 @@ function alexanderClick() {
     alexanderDiv.removeEventListener('click', alexanderClick);
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.remove('hidden');
+    alexander = false;
   }
 }
 
@@ -197,7 +210,11 @@ function jonathanClick() {
     jonathan = true;
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.add('hidden');
   } else {
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     jonathanDiv.style.gridArea = '2 / 4 / 3 / 5';
     revertChanges();
@@ -208,6 +225,8 @@ function jonathanClick() {
     jonathanDiv.removeEventListener('click', jonathanClick);
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.remove('hidden');
+    jonathan = false;
   }
 }
 
@@ -223,7 +242,11 @@ function wallaceClick() {
     wallace = true;
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.add('hidden');
   } else {
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     wallaceDiv.style.gridArea = '2 / 5 / 3 / 6';
     revertChanges();
@@ -234,6 +257,8 @@ function wallaceClick() {
     wallaceDiv.removeEventListener('click', wallaceClick);
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.remove('hidden');
+    wallace = false;
   }
 }
 
@@ -249,6 +274,7 @@ function leonardClick() {
     leonard = true;
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.add('hidden');
   } else {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
@@ -263,6 +289,8 @@ function leonardClick() {
     leonardDiv.removeEventListener('click', leonardClick);
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.remove('hidden');
+    leonard = false;
   }
 }
 
@@ -274,7 +302,27 @@ function alibiClick() {
     user.claraAlibi = claraDeveraux.additionalAlibi;
     user.Clara = true;
     user.updateLocalStorage();
-  }  
+  } else if (marguerite === true) {
+    displayConversation(margueriteFontaine.alibiConversation);
+    user.margueriteAlibi = margueriteFontaine.additionalAlibi;
+    user.Marguerite = true;
+    user.updateLocalStorage();
+  } else if (alexander === true) {
+    displayConversation(alexanderPetrov.alibiConversation);
+    user.alexanderAlibi = alexanderPetrov.additionalAlibi;
+    user.Alexander = true;
+    user.updateLocalStorage();
+  } else if (jonathan === true) {
+    displayConversation(jonathanVanDyke.alibiConversation);
+    user.jonathanAlibi = jonathanVanDyke.additionalAlibi;
+    user.Jonathan = true;
+    user.updateLocalStorage();
+  } else if (wallace === true) {
+    displayConversation(captainWallace.alibiConversation);
+    user.wallaceAlibi = captainWallace.additionalAlibi;
+    user.Wallace = true;
+    user.updateLocalStorage();
+  } 
 }
 
 function evidenceClick() {
@@ -284,6 +332,26 @@ function evidenceClick() {
     displayConversation(claraDeveraux.evidenceConversation);
     user.claraEvidence = claraDeveraux.additionalEvidence;
     user.Clara = true;
+    user.updateLocalStorage();
+  } else if (marguerite === true) {
+    displayConversation(margueriteFontaine.evidenceConversation);
+    user.margueriteEvidence = margueriteFontaine.additionalEvidence;
+    user.Marguerite = true;
+    user.updateLocalStorage();
+  } else if (alexander === true) {
+    displayConversation(alexanderPetrov.evidenceConversation);
+    user.alexanderEvidence = alexanderPetrov.additionalEvidence;
+    user.Alexander = true;
+    user.updateLocalStorage();
+  } else if (jonathan === true) {
+    displayConversation(jonathanVanDyke.evidenceConversation);
+    user.jonathanEvidence = jonathanVanDyke.additionalEvidence;
+    user.Jonathan = true;
+    user.updateLocalStorage();
+  } else if (wallace === true) {
+    displayConversation(captainWallace.evidenceConversation);
+    user.wallaceEvidence = captainWallace.additionalEvidence;
+    user.Wallace = true;
     user.updateLocalStorage();
   }
 
@@ -303,6 +371,96 @@ function claraAccusation() {
     wrongGuess.innerText = `Sorry, you got it wrong. You have ${guesses - 1} guesses left.`;
     playerSpeechElement.appendChild(wrongGuess);
     displayConversation(claraDeveraux.accusationExplanation);
+    guesses --;
+  }
+}
+
+function margueriteAccusation() {
+  if (guesses !== 0){
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
+    mainBackground.style.backgroundImage = 'url("../img/airship 8.png")';
+    margueriteDiv.style.gridArea = '2 / 2 / 3 / 3';
+    margueriteDiv.classList.remove('hidden');
+    hideImages('marguerite');
+    playerSpeechElement.classList.remove('hidden');
+    let wrongGuess = document.createElement('h2');
+    wrongGuess.innerText = `Sorry, you got it wrong. You have ${guesses - 1} guesses left.`;
+    playerSpeechElement.appendChild(wrongGuess);
+    displayConversation(margueriteFontaine.accusationExplanation);
+    guesses --;
+  }
+}
+
+function alexanderAccusation() {
+  if (guesses !== 0){
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
+    mainBackground.style.backgroundImage = 'url("../img/airship 8.png")';
+    alexanderDiv.style.gridArea = '2 / 2 / 3 / 3';
+    alexanderDiv.classList.remove('hidden');
+    hideImages('alexander');
+    playerSpeechElement.classList.remove('hidden');
+    let wrongGuess = document.createElement('h2');
+    wrongGuess.innerText = `Sorry, you got it wrong. You have ${guesses - 1} guesses left.`;
+    playerSpeechElement.appendChild(wrongGuess);
+    displayConversation(alexanderPetrov.accusationExplanation);
+    guesses --;
+  }
+}
+
+function jonathanAccusation() {
+  if (guesses !== 0){
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
+    mainBackground.style.backgroundImage = 'url("../img/airship 8.png")';
+    jonathanDiv.style.gridArea = '2 / 2 / 3 / 3';
+    jonathanDiv.classList.remove('hidden');
+    hideImages('jonathan');
+    playerSpeechElement.classList.remove('hidden');
+    let wrongGuess = document.createElement('h2');
+    wrongGuess.innerText = `Sorry, you got it wrong. You have ${guesses - 1} guesses left.`;
+    playerSpeechElement.appendChild(wrongGuess);
+    displayConversation(jonathanVanDyke.accusationExplanation);
+    guesses --;
+  }
+}
+
+function wallaceAccusation() {
+  if (guesses !== 0){
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
+    mainBackground.style.backgroundImage = 'url("../img/airship 8.png")';
+    wallaceDiv.style.gridArea = '2 / 2 / 3 / 3';
+    wallaceDiv.classList.remove('hidden');
+    hideImages('wallace');
+    playerSpeechElement.classList.remove('hidden');
+    let wrongGuess = document.createElement('h2');
+    wrongGuess.innerText = `Sorry, you got it wrong. You have ${guesses - 1} guesses left.`;
+    playerSpeechElement.appendChild(wrongGuess);
+    displayConversation(captainWallace.accusationExplanation);
+    guesses --;
+  }
+}
+
+function leonardAccusation() {
+  if (guesses !== 0){
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
+    mainBackground.style.backgroundImage = 'url("../img/airship 8.png")';
+    leonardDiv.style.gridArea = '2 / 2 / 3 / 3';
+    leonardDiv.classList.remove('hidden');
+    hideImages('leonard');
+    playerSpeechElement.classList.remove('hidden');
+    let correctGuess = document.createElement('h2');
+    correctGuess.innerText = 'Great job detective! You solved the mystery.';
+    playerSpeechElement.appendChild(correctGuess);
+    displayConversation(leonardVanDyke.accusationExplanation);
     guesses --;
   }
 }
@@ -441,7 +599,7 @@ const claraDeveraux = {
   assistantNotes: 'Clara held a grudge against Van Dyke for trying to ruin her career. Is that enough of a motive? And does she have a strong alibi?',
 
 
-  accusationExplanation: 'Clara\'s resentment towards Van Dyke is clear, and her interest in the painting is undeniable. However, she has a strong alibi. The steward vouches for her presence in her quarters during the estimated time of the murder. As well as her passion for art which seems more towards creation rather than destruction or theft. Her guilt is highly unlikely.',
+  accusationExplanation: ['Clara\'s resentment towards Van Dyke is clear, and her interest in the painting is undeniable. However, she has a strong alibi. The steward vouches for her presence in her quarters during the estimated time of the murder. As well as her passion for art which seems more towards creation rather than destruction or theft. Her guilt is highly unlikely.'],
 
   evidenceConversation: [
     'Det. Blythe: Good morning, Miss Deveraux, do you mind if I asked you some questions, maybe take a look around your quarters? I\'m sure you\'ve heard about what happened last night.',
@@ -510,7 +668,7 @@ const margueriteFontaine = {
     'Marguerite: You\'ll find nothing regarding me on your wild goose chase so don\'t waste your time.',
   ],
 
-  accusationExplanation: 'Marguerite indeed had a financial motive, and the broken pearl necklace found at the crime scene does raise suspicions. However, let us carefully consider this perplexing puzzle. The presence of the necklace might be nothing more than a clever ruse, intended to divert our attention from the true perpetrator, and she wasn\'t seen anywhere, by anyone, the night of the murder. No, my dear friends, Marguerite may be entangled in a web of her own misdeeds, but the threads connecting her to this particular crime remain tenuous at best.'
+  accusationExplanation: ['Marguerite indeed had a financial motive, and the broken pearl necklace found at the crime scene does raise suspicions. However, let us carefully consider this perplexing puzzle. The presence of the necklace might be nothing more than a clever ruse, intended to divert our attention from the true perpetrator, and she wasn\'t seen anywhere, by anyone, the night of the murder. No, my dear friends, Marguerite may be entangled in a web of her own misdeeds, but the threads connecting her to this particular crime remain tenuous at best.']
 
 };
 
@@ -556,7 +714,7 @@ const alexanderPetrov = {
   ],
 
 
-  accusationExplanation: 'While the evidence may initially raise suspicions about Alexander Petrov\'s involvement in Van Dyke\'s murder, a closer examination reveals inconsistencies. Although Alexander had a diplomatic dispute with Leonard over the ownership of certain paintings, it does not provide a sufficient motive for murder. There is no concrete evidence linking Alexander to the actual theft, also Alexander\'s alibi for the night of the murder is supported by his interaction with Captain Wallace, with whom he shared a history of wartime conflict. Their meeting was an act of reconciliation, unrelated to Leonard\'s murder although politicians have a knack for lying and this could be an attempt by both him and Capt. Wallace to pull at the heart strings and quell suspicions. Additionally, there are no witnesses or substantial evidence placing Alexander at the scene of the crime. ',
+  accusationExplanation: ['While the evidence may initially raise suspicions about Alexander Petrov\'s involvement in Van Dyke\'s murder, a closer examination reveals inconsistencies. Although Alexander had a diplomatic dispute with Leonard over the ownership of certain paintings, it does not provide a sufficient motive for murder. There is no concrete evidence linking Alexander to the actual theft, also Alexander\'s alibi for the night of the murder is supported by his interaction with Captain Wallace, with whom he shared a history of wartime conflict. Their meeting was an act of reconciliation, unrelated to Leonard\'s murder although politicians have a knack for lying and this could be an attempt by both him and Capt. Wallace to pull at the heart strings and quell suspicions. Additionally, there are no witnesses or substantial evidence placing Alexander at the scene of the crime. '],
 };
 
 const jonathanVanDyke = {
@@ -601,9 +759,9 @@ const jonathanVanDyke = {
     'Blythe: We\'ll do our best to uncover the facts and bring justice to this case. Thank you for your cooperation, Jonathan.',
   ],
 
-  ifAccused: [
-    'Despite Jonathan Van Dyke\'s involvement in the attempted theft of the painting, lack of direct involvement in the murder, and the absence of concrete evidence connecting him to the crime scene all contribute to his innocence. While his actions to steal from his father to pay gambling debts may have cast doubt on his character, it is crucial to look beyond this, he was forthright with information, and seems to be a terrible liar. I suspect he\'s been truthful so far and is not the perpetrator.',
-  ],
+  accusationExplanation:
+    ['Despite Jonathan Van Dyke\'s involvement in the attempted theft of the painting, lack of direct involvement in the murder, and the absence of concrete evidence connecting him to the crime scene all contribute to his innocence. While his actions to steal from his father to pay gambling debts may have cast doubt on his character, it is crucial to look beyond this, he was forthright with information, and seems to be a terrible liar. I suspect he\'s been truthful so far and is not the perpetrator.'],
+
 };
 
 const captainWallace = {
@@ -663,9 +821,7 @@ const captainWallace = {
     'Det. Blythe: Thank you, Captain Wallace, for your time and cooperation. I will continue my investigation.',
   ],
 
-  ifAccused: [
-    'While Capt. Wallace may have a troubled history with Leonard, there is insufficient evidence to support his direct involvement in the murder. The alibi, lack of motive, and limited evidence point away from him as the perpetrator. It is crucial to consider the broader context of the case and explore the motives and actions of Leonard himself, who emerges as a central figure in this complex mystery.',
-  ]
+  accusationExplanation: ['While Capt. Wallace may have a troubled history with Leonard, there is insufficient evidence to support his direct involvement in the murder. The alibi, lack of motive, and limited evidence point away from him as the perpetrator. It is crucial to consider the broader context of the case and explore the motives and actions of Leonard himself, who emerges as a central figure in this complex mystery.'],
 };
 
 const leonardVanDyke = {
@@ -679,7 +835,7 @@ const leonardVanDyke = {
 
   alibi: 'Van Dyke was last seen outside on the decks of the zeppelin last night. Telling Stories of his adventures with the other passengers.',
 
-  accusationExplanation: ['Ladies and gentlemen, esteemed guests, and my ever-vigilant assistant, Fitzgerald. As we gather here to reflect on the perplexing case of Leonard Van Dyke\'s disappearance, I am compelled to share with you the depths of the enigma we have encountered. Throughout our investigation, we meticulously examined every aspect of the evidence, delving into the motives and alibis of each suspect. Yet, despite our efforts, a fog of uncertainty lingers. One crucial piece of information has come to light. It appears that the doctor aboard this zeppelin, in a rather peculiar act, concealed the fact that Leonard Van Dyke\'s body had mysteriously vanished in the early hours of the morning. This revelation raises the stakes and deepens the intrigue surrounding this case. Moreover, the painting that Leonard cherished so dearly has vanished without a trace, echoing his own disappearance. How could such valuable artifacts vanish from within these walls?']['As we sifted through the clues, we encountered contradictions and inconsistencies that defied easy explanation. Clara Deveraux\'s artistic resentment, Marguerite Fontaine\'s financial troubles, Alexander Petrov\'s diplomatic disputes, Jonathan Van Dyke\'s desperate intentions—all, and Capt. Wallace\'s grudge for a tragedy caused by Leonard himself. All intriguing, yet none fully fitting the puzzle. In light of these perplexities, we must consider the possibility that Leonard Van Dyke\'s disappearance was not a result of happenstance. Instead, it points to a meticulously crafted plan, masterminded by a figure lurking in the shadows. The orchestration of this elaborate scheme leaves us questioning the true nature of events. The evidence before us does not align seamlessly. It seems we are facing an enigma that reaches beyond the confines of a simple murder. A shadowy web of manipulation and deception has been woven, obscuring the truth and leaving us with more questions than answers. Let us embark on this next phase of our investigation with unwavering determination, for the road ahead promises greater challenges and revelations. The truth may be elusive, but we shall not rest until we have unraveled this intricate tapestry of deception and have found Mr. Leonard Van Dyke.'],
+  accusationExplanation: ['Ladies and gentlemen, esteemed guests, and my ever-vigilant assistant, Fitzgerald. As we gather here to reflect on the perplexing case of Leonard Van Dyke\'s disappearance, I am compelled to share with you the depths of the enigma we have encountered. Throughout our investigation, we meticulously examined every aspect of the evidence, delving into the motives and alibis of each suspect. Yet, despite our efforts, a fog of uncertainty lingers. One crucial piece of information has come to light. It appears that the doctor aboard this zeppelin, in a rather peculiar act, concealed the fact that Leonard Van Dyke\'s body had mysteriously vanished in the early hours of the morning. This revelation raises the stakes and deepens the intrigue surrounding this case. Moreover, the painting that Leonard cherished so dearly has vanished without a trace, echoing his own disappearance. How could such valuable artifacts vanish from within these walls?','As we sifted through the clues, we encountered contradictions and inconsistencies that defied easy explanation. Clara Deveraux\'s artistic resentment, Marguerite Fontaine\'s financial troubles, Alexander Petrov\'s diplomatic disputes, Jonathan Van Dyke\'s desperate intentions—all, and Capt. Wallace\'s grudge for a tragedy caused by Leonard himself. All intriguing, yet none fully fitting the puzzle. In light of these perplexities, we must consider the possibility that Leonard Van Dyke\'s disappearance was not a result of happenstance. Instead, it points to a meticulously crafted plan, masterminded by a figure lurking in the shadows. The orchestration of this elaborate scheme leaves us questioning the true nature of events. The evidence before us does not align seamlessly. It seems we are facing an enigma that reaches beyond the confines of a simple murder. A shadowy web of manipulation and deception has been woven, obscuring the truth and leaving us with more questions than answers. Let us embark on this next phase of our investigation with unwavering determination, for the road ahead promises greater challenges and revelations. The truth may be elusive, but we shall not rest until we have unraveled this intricate tapestry of deception and have found Mr. Leonard Van Dyke.'],
 };
 
   // Displays the conversation based on the question asked
@@ -697,7 +853,7 @@ function displayConversation(conversation) {
       index++;
   
       let charIndex = 0;
-      const typeInterval = 25; // Delay between typing each character
+      const typeInterval = 10; // Delay between typing each character
   
       const typeWriter = setInterval(() => {
         if (charIndex < line.length) {

@@ -111,7 +111,7 @@ main {
   max-height: 100%;
   background-image: url('../img/bgPaper.png');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size:cover;
   background-position: center;
   color: black;
   grid-area: 1 / 3 / 2 / 5;
@@ -275,5 +275,70 @@ footer{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* LOGBOOK BUTTON
+#logbookButton {
+ position: fixed;
+ top:86px;
+ left: 60px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background: #fff;
+ height: 60px;
+ width: 150px;
+ border-radius: 10px;
+ /* KEEP the index, displays the contents of logbook */
+ /* z-index: 1000;
+
+
+} */
+
+
+/* NEED TO FIX THE logbook div  */
+/* #logbook {
+ position: fixed;
+ padding-top: 100px;
+ background-color: #f0f0f0;
+ border: 1px solid #ccc;
+ border-radius: 4px;
+ margin-top: 10px;
+ display: grid;
+ place-items: center; */
+ /* PLACEHOLDER IMAGE */
+ /* background-image: url("img/paper.png");
+ background-size: cover; */
+/* } */
+
+
+
+
+
+
+/* #logbook h3, p {
+ margin: 5px 0;
+ padding: 3px;
+ background-color: #f7f2f2;
+ color: #0d0d0d;
 
 
