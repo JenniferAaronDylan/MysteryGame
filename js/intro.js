@@ -1,5 +1,26 @@
 'use strict';
 
+let introText = 'The Story: In the heart of the roaring 20s, a group of diverse individuals finds themselves on a late-night journey on the luxurious transatlantic Zeppelin, The Sky Empress. As they soar over the Atlantic, the renowned millionaire and art collector, Leonard Van Dyke, is found dead in his private cabin, a priceless painting missing. Among the passengers, the retired detective Frederick Blythe takes it upon himself to investigate. Suspects include a disgruntled artist, a wealthy heiress, a mysterious foreign diplomat, Van Dyke\'s estranged son, and the zeppelin\'s enigmatic captain. One by one, Blythe interviews each suspect and discovers each had a reason to wish Van Dyke harm. As the plot thickens, Blythe finds a cryptic note in Van Dyke\'s cabin reading, “Art is an illusion. So am I.”';
+
+const typer = document.getElementById('intro');
+let index = 0;
+let delay = 30;
+
+function getRandom() {
+  return Math.floor(Math.random() * 100) + 1;
+}
+
+function type() {
+  if (index < introText.length) {
+    typer.textContent += introText.charAt(index);
+    index ++;
+    setTimeout(type, delay);
+    delay = getRandom();
+  }
+}
+
+type();
+
 // let nameForm = document.getElementById('nameForm');
 // let nameInput = document.getElementById("nameInput");
 

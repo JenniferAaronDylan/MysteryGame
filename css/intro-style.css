@@ -1,4 +1,8 @@
 
+body{
+  background-color: rgb(205, 193, 157);
+}
+
 h1 {
   font-family: 'Playfair Display', serif;
   font-size: 50px;
@@ -48,6 +52,15 @@ button {
 
 .image-container {
   width: 100%;
+  background-image: url('../img/paper.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
 }
 
 .character-image img {
@@ -67,13 +80,30 @@ button {
 }
 
 .detec-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
+  background-image: url('../img/paper.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: white;
 }
 
 .detec-character-image img {
   max-width: 100%;
   height: auto;
 }
+
+h2 {
+  padding: 15px;
+  word-wrap: break-word;
+  text-align:center;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 25px;
+}
+
 
 
 

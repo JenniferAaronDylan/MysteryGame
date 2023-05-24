@@ -304,41 +304,41 @@ function getRandomDelay() {
   return Math.floor(Math.random() * 1000) + 500;
 }
 
-// Clara HTML Buttons
-<div>
-<button id="askForAlibiButton">Ask about Alibi</button>
-<button id="searchForEvidenceButton">Search for Evidence</button>
-<div id="conversation">
-  <p id="playerSpeech"></p>
-  <p id="characterSpeech"></p>
-</div>
-</div>
+// // Clara HTML Buttons
+// <div>
+// <button id="askForAlibiButton">Ask about Alibi</button>
+// <button id="searchForEvidenceButton">Search for Evidence</button>
+// <div id="conversation">
+//   <p id="playerSpeech"></p>
+//   <p id="characterSpeech"></p>
+// </div>
+// </div>
 
-// Event Listeners for Clara's HTML Buttons
+// // Event Listeners for Clara's HTML Buttons
 
-const askForAlibiButton = document.getElementById('askForAlibi');
-const searchForEvidenceButton = document.getElementById('searchForEvidence');
-const accuseClaraButton = document.getElementById('accuseClara');
+// const askForAlibiButton = document.getElementById('askForAlibi');
+// const searchForEvidenceButton = document.getElementById('searchForEvidence');
+// const accuseClaraButton = document.getElementById('accuseClara');
 
-askForAlibiButton.addEventListener('click', function() {
-  claraDeveraux.unlockResponse('askForAlibi');
-});
+// askForAlibiButton.addEventListener('click', function() {
+//   claraDeveraux.unlockResponse('askForAlibi');
+// });
 
-searchForEvidenceButton.addEventListener('click', function() {
-  claraDeveraux.unlockResponse('searchForEvidence');
-});
+// searchForEvidenceButton.addEventListener('click', function() {
+//   claraDeveraux.unlockResponse('searchForEvidence');
+// });
 
-accuseClaraButton.addEventListener('click', function() {
-  claraDeveraux.updateAccusationStatus(true);
-});
+// accuseClaraButton.addEventListener('click', function() {
+//   claraDeveraux.updateAccusationStatus(true);
+// });
 
-document.getElementById('askForAlibiButton').addEventListener('click', function() {
-  claraDeveraux.displayConversation(claraDeveraux.alibiConversation);
-});
+// document.getElementById('askForAlibiButton').addEventListener('click', function() {
+//   claraDeveraux.displayConversation(claraDeveraux.alibiConversation);
+// });
 
-document.getElementById('searchForEvidenceButton').addEventListener('click', function() {
-  claraDeveraux.displayConversation(claraDeveraux.evidenceConversation);
-});
+// document.getElementById('searchForEvidenceButton').addEventListener('click', function() {
+//   claraDeveraux.displayConversation(claraDeveraux.evidenceConversation);
+// });
 
 
 
