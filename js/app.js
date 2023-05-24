@@ -15,6 +15,13 @@ const playerSpeechElement = document.getElementById('playerSpeech');
 const evidence = document.getElementById('evidence');
 const askForAlibiButton = document.getElementById('askForAlibi');
 const searchForEvidenceButton = document.getElementById('searchForEvidence');
+const accuseDiv = document.getElementById('accuse');
+const accuseClara = document.getElementById('accuseClara');
+const accuseMarguerite = document.getElementById('accuseMarguerite');
+const accuseAlexander = document.getElementById('accuseAlexander');
+const accuseJonathan = document.getElementById('accuseJonathan');
+const accuseWallace = document.getElementById('accuseWallace');
+const accuseLeonard = document.getElementById('accuseLeonard');
 
 let clara = user.Clara;
 let marguerite = user.Marguerite;
@@ -22,6 +29,7 @@ let alexander = user.Alexander;
 let jonathan = user.Jonathan;
 let wallace = user.Wallace;
 let leonard = user.Leonard;
+let guesses = 3;
 
 claraDiv.addEventListener('click', claraClick)
 margueriteDiv.addEventListener('click', margueriteClick)
@@ -29,6 +37,12 @@ alexanderDiv.addEventListener('click', alexanderClick)
 jonathanDiv.addEventListener('click', jonathanClick)
 wallaceDiv.addEventListener('click', wallaceClick)
 leonardDiv.addEventListener('click', leonardClick)
+accuseClara.addEventListener('click', claraAccusation);
+// accuseMarguerite.addEventListener('click', margueriteAccusation);
+// accuseAlexander.addEventListener('click', alexanderAccusation);
+// accuseJonathan.addEventListener('click', jonathanAccusation);
+// accuseWallace.addEventListener('click', wallaceAccusation);
+// accuseLeonard.addEventListener('click', leonardAccusation);
 
 // User Constructor
 // To Do.  In submission handler for username, check local storage.  If username exists, start game from previous state.
@@ -90,7 +104,11 @@ function claraClick() {
     clara = true;
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.add('hidden');
   } else {
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     claraDiv.style.gridArea = '2 / 1 / 3 / 2';
     revertChanges();
@@ -101,6 +119,7 @@ function claraClick() {
     claraDiv.removeEventListener('click', claraClick);
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.remove('hidden');
   }
 }
 
@@ -221,6 +240,9 @@ function leonardClick() {
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
   } else {
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     leonardDiv.style.gridArea = '2 / 6 / 3 / 7';
     revertChanges();
@@ -256,6 +278,25 @@ function evidenceClick() {
   }
 
 }
+
+function claraAccusation() {
+  if (guesses !== 0){
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
+    mainBackground.style.backgroundImage = 'url("../img/airship 8.png")';
+    claraDiv.style.gridArea = '2 / 2 / 3 / 3';
+    claraDiv.classList.remove('hidden');
+    hideImages('clara');
+    playerSpeechElement.classList.remove('hidden');
+    let wrongGuess = document.createElement('h2');
+    wrongGuess.innerText = `Sorry, you got it wrong. You have ${guesses - 1} guesses left.`;
+    playerSpeechElement.appendChild(wrongGuess);
+    displayConversation(claraDeveraux.accusationExplanation);
+    guesses --;
+  }
+}
+
 
 
 
@@ -324,7 +365,7 @@ const claraDeveraux = {
 
   assistantNotes: 'Clara held a grudge against Van for trying to ruin her career. Is that enough of a motive? And does she have a strong alibi?',
 
-  accusationExplanation: 'Clara\'s resentment towards Van is clear, and her interest in the painting is undeniable. However, she has a strong alibi. The steward vouches for her presence in her quarters during the estimated time of the murder. As well as her passion for art which seems more towards creation rather than destruction or theft. Her guilt is highly unlikely.',
+  accusationExplanation: ['Clara\'s resentment towards Van is clear, and her interest in the painting is undeniable. However, she has a strong alibi. The steward vouches for her presence in her quarters during the estimated time of the murder. As well as her passion for art which seems more towards creation rather than destruction or theft. Her guilt is highly unlikely.'],
 
   evidenceConversation: [
     'Det. Blythe: Good morning, Miss Deveraux, do you mind if I asked you some questions, maybe take a look around your quarters? I\'m sure you\'ve heard about what happened last night.',
