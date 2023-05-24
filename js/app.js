@@ -853,7 +853,7 @@ function displayConversation(conversation) {
       index++;
   
       let charIndex = 0;
-      const typeInterval = 25; // Delay between typing each character
+      const typeInterval = 10; // Delay between typing each character
   
       const typeWriter = setInterval(() => {
         if (charIndex < line.length) {
