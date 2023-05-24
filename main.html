@@ -16,16 +16,7 @@
     </nav>
   </header>
   <main>
-    <div class="hidden" id="characterSpeech">
-      <div class="speech-bubble">
-        <p>this is a speech bubble</p>
-      </div>
-    </div>
     <div class="hidden" id="playerSpeech">
-      <div class="speech-bubble">
-        <img src="img/bgPaper.png" alt="">
-        <p>this is a speech bubble</p>
-      </div>
     </div>
     <div id="clara" class="base-state">
       <img src="img/clara.png" alt="">
@@ -56,10 +47,8 @@
     <div id="assistant" class="hidden">
       <img src="img/detective2.png" alt="">
     </div>
-    <div id="alibi">
+    <div id="evidence" class="hidden">
       <button id="askForAlibi">Ask For Alibi</button>
-    </div>
-    <div id="evidence">
       <button id="searchForEvidence">Search For Evidence</button>
     </div>
 
@@ -67,10 +56,14 @@
       <button>Logbook</button>
     </div>
   </main>
-  <footer>
+  <section id="accuse">
+    <button id="accuseClara">Accuse Clara</button><button id="accuseMarguerite">Accuse Marguerite</button><button id="accuseAlexander">Accuse Alexander</button><button id="accuseJonathan">Accuse Jonathan</button><button id=accuseWallace>Accuse Wallace</button><button id="accuseLeonard">Accuse Leonard</button>
+  
+  </section>
+  <!-- <footer>
     <p>TEST FOOTER</p>
-  </footer>
+  </footer> -->
   <script src="js/app.js"></script>
-  <script src="js/jen.js"></script>
+  <!-- <script src="js/jen.js"></script> -->
 </body>
 </html>

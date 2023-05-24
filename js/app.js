@@ -1,7 +1,7 @@
 'use strict'
 
 // Globals
-const user = getUser();
+const user = new User(getUser());
 const mainBackground = document.querySelector('main');
 const claraDiv = document.getElementById('clara');
 const margueriteDiv = document.getElementById('marguerite');
@@ -12,16 +12,24 @@ const leonardDiv = document.getElementById('leonard');
 const detectiveDiv= document.getElementById('detective');
 const assistantDiv = document.getElementById('assistant');
 const playerSpeechElement = document.getElementById('playerSpeech');
-const characterSpeechElement = document.getElementById('characterSpeech');
+const evidence = document.getElementById('evidence');
 const askForAlibiButton = document.getElementById('askForAlibi');
 const searchForEvidenceButton = document.getElementById('searchForEvidence');
+const accuseDiv = document.getElementById('accuse');
+const accuseClara = document.getElementById('accuseClara');
+const accuseMarguerite = document.getElementById('accuseMarguerite');
+const accuseAlexander = document.getElementById('accuseAlexander');
+const accuseJonathan = document.getElementById('accuseJonathan');
+const accuseWallace = document.getElementById('accuseWallace');
+const accuseLeonard = document.getElementById('accuseLeonard');
 
-let clara = false;
-let marguerite = false;
-let alexander = false;
-let jonathan = false;
-let wallace = false;
-let leonard = false;
+let clara = user.Clara;
+let marguerite = user.Marguerite;
+let alexander = user.Alexander;
+let jonathan = user.Jonathan;
+let wallace = user.Wallace;
+let leonard = user.Leonard;
+let guesses = 3;
 
 claraDiv.addEventListener('click', claraClick)
 margueriteDiv.addEventListener('click', margueriteClick)
@@ -29,18 +37,36 @@ alexanderDiv.addEventListener('click', alexanderClick)
 jonathanDiv.addEventListener('click', jonathanClick)
 wallaceDiv.addEventListener('click', wallaceClick)
 leonardDiv.addEventListener('click', leonardClick)
+accuseClara.addEventListener('click', claraAccusation);
+// accuseMarguerite.addEventListener('click', margueriteAccusation);
+// accuseAlexander.addEventListener('click', alexanderAccusation);
+// accuseJonathan.addEventListener('click', jonathanAccusation);
+// accuseWallace.addEventListener('click', wallaceAccusation);
+// accuseLeonard.addEventListener('click', leonardAccusation);
 
 // User Constructor
 // To Do.  In submission handler for username, check local storage.  If username exists, start game from previous state.
 
-function User(userName){
-  this.userName = userName;
-  this.Clara = false;
-  this.Marguerite = false;
-  this.Alexander = false;
-  this.Jonathan = false;
-  this.Wallace = false;
-  this.Leonard = false;
+function User(user){
+  this.userName = user.userName;
+  this.Clara = user.Clara;
+  this.Marguerite = user.Marguerite;
+  this.Alexander = user.Alexander;
+  this.Jonathan = user.Jonathan;
+  this.Wallace = user.Wallace;
+  this.Leonard = user.Leonard;
+  this.claraEvidence = user.claraEvidence;
+  this.claraAlibi = user.claraAlibi;
+  this.margueriteEvidence = user.margueriteEvidence;
+  this.margueriteAlibi = user.margueriteAlibi;
+  this.alexanderEvidence = user.alexanderEvidence;
+  this.alexanderAlibi = user.alexanderAlibi;
+  this.jonathanEvidence = user.jonathanEvidence;
+  this.jonathanAlibi = user.jonathanAlibi;
+  this.wallaceEvidence = user.wallaceEvidence;
+  this.wallaceAlibi = user.wallaceAlibi;
+  this.leonardEvidence = user.leonardEvidence;
+  this.leonardAlibi = user.leonardAlibi;
 }
 
 User.prototype.updateLocalStorage = function() {
@@ -84,17 +110,26 @@ function claraClick() {
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
     playerSpeechElement.classList.remove('hidden');
-    characterSpeechElement.classList.remove('hidden');
+    evidence.classList.remove('hidden');
     clara = true;
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.add('hidden');
   } else {
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     claraDiv.style.gridArea = '2 / 1 / 3 / 2';
     revertChanges();
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
     playerSpeechElement.classList.add('hidden');
-    characterSpeechElement.classList.add('hidden');
+    evidence.classList.add('hidden');
     claraDiv.removeEventListener('click', claraClick);
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
+    accuseDiv.classList.remove('hidden');
   }
 }
 
@@ -106,8 +141,10 @@ function margueriteClick() {
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
     playerSpeechElement.classList.remove('hidden');
-    characterSpeechElement.classList.remove('hidden');
+    evidence.classList.remove('hidden');
     marguerite = true;
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     margueriteDiv.style.gridArea = '2 / 2 / 3 / 3';
@@ -115,8 +152,10 @@ function margueriteClick() {
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
     playerSpeechElement.classList.add('hidden');
-    characterSpeechElement.classList.add('hidden');
+    evidence.classList.add('hidden');
     margueriteDiv.removeEventListener('click', margueriteClick);
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   }
 }
 
@@ -128,8 +167,10 @@ function alexanderClick() {
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
     playerSpeechElement.classList.remove('hidden');
-    characterSpeechElement.classList.remove('hidden');
+    evidence.classList.remove('hidden');
     alexander = true;
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     alexanderDiv.style.gridArea = '2 / 3 / 3 / 4';
@@ -137,8 +178,10 @@ function alexanderClick() {
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
     playerSpeechElement.classList.add('hidden');
-    characterSpeechElement.classList.add('hidden');
+    evidence.classList.add('hidden');
     alexanderDiv.removeEventListener('click', alexanderClick);
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   }
 }
 
@@ -150,8 +193,10 @@ function jonathanClick() {
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
     playerSpeechElement.classList.remove('hidden');
-    characterSpeechElement.classList.remove('hidden');
+    evidence.classList.remove('hidden');
     jonathan = true;
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     jonathanDiv.style.gridArea = '2 / 4 / 3 / 5';
@@ -159,8 +204,10 @@ function jonathanClick() {
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
     playerSpeechElement.classList.add('hidden');
-    characterSpeechElement.classList.add('hidden');
+    evidence.classList.add('hidden');
     jonathanDiv.removeEventListener('click', jonathanClick);
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   }
 }
 
@@ -172,8 +219,10 @@ function wallaceClick() {
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
     playerSpeechElement.classList.remove('hidden');
-    characterSpeechElement.classList.remove('hidden');
+    evidence.classList.remove('hidden');
     wallace = true;
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     wallaceDiv.style.gridArea = '2 / 5 / 3 / 6';
@@ -181,8 +230,10 @@ function wallaceClick() {
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
     playerSpeechElement.classList.add('hidden');
-    characterSpeechElement.classList.add('hidden');
+    evidence.classList.add('hidden');
     wallaceDiv.removeEventListener('click', wallaceClick);
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   }
 }
 
@@ -194,20 +245,67 @@ function leonardClick() {
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
     playerSpeechElement.classList.remove('hidden');
-    characterSpeechElement.classList.remove('hidden');
+    evidence.classList.remove('hidden');
     leonard = true;
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   } else {
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     leonardDiv.style.gridArea = '2 / 6 / 3 / 7';
     revertChanges();
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
     playerSpeechElement.classList.add('hidden');
-    characterSpeechElement.classList.add('hidden');
+    evidence.classList.add('hidden');
     leonardDiv.removeEventListener('click', leonardClick);
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   }
 }
 
+function alibiClick() {
+  askForAlibiButton.removeEventListener('click', alibiClick);
+  searchForEvidenceButton.removeEventListener('click', evidenceClick);
+  if (clara === true) {
+    displayConversation(claraDeveraux.alibiConversation);
+    user.claraAlibi = claraDeveraux.additionalAlibi;
+    user.Clara = true;
+    user.updateLocalStorage();
+  }  
+}
+
+function evidenceClick() {
+  askForAlibiButton.removeEventListener('click', alibiClick);
+  searchForEvidenceButton.removeEventListener('click', evidenceClick);
+  if (clara === true ) {
+    displayConversation(claraDeveraux.evidenceConversation);
+    user.claraEvidence = claraDeveraux.additionalEvidence;
+    user.Clara = true;
+    user.updateLocalStorage();
+  }
+
+}
+
+function claraAccusation() {
+  if (guesses !== 0){
+    while(playerSpeechElement.firstChild) {
+      playerSpeechElement.removeChild(playerSpeechElement.firstChild)
+    }
+    mainBackground.style.backgroundImage = 'url("../img/airship 8.png")';
+    claraDiv.style.gridArea = '2 / 2 / 3 / 3';
+    claraDiv.classList.remove('hidden');
+    hideImages('clara');
+    playerSpeechElement.classList.remove('hidden');
+    let wrongGuess = document.createElement('h2');
+    wrongGuess.innerText = `Sorry, you got it wrong. You have ${guesses - 1} guesses left.`;
+    playerSpeechElement.appendChild(wrongGuess);
+    displayConversation(claraDeveraux.accusationExplanation);
+    guesses --;
+  }
+}
 
 
 
@@ -342,6 +440,7 @@ const claraDeveraux = {
 
   assistantNotes: 'Clara held a grudge against Van Dyke for trying to ruin her career. Is that enough of a motive? And does she have a strong alibi?',
 
+
   accusationExplanation: 'Clara\'s resentment towards Van Dyke is clear, and her interest in the painting is undeniable. However, she has a strong alibi. The steward vouches for her presence in her quarters during the estimated time of the murder. As well as her passion for art which seems more towards creation rather than destruction or theft. Her guilt is highly unlikely.',
 
   evidenceConversation: [
@@ -422,6 +521,7 @@ const alexanderPetrov = {
   role: 'Foreign Diplomat',
   image: '../img/alexander.png',
 
+
   evidence: 'Found a letter in Petrov\'s quarters hinting at a dispute over a diplomatic matter with Van Dyke.',
   additionalEvidence: 'Alexander denies any involvement in the murder and maintains his innocence. The stolen painting is one of the artworks currently in dispute between him and Van Dyke. We have no concrete evidence linking Petrov to the crime at this point, but his behavior raises suspicions. He left me with a cryptic note about Van Dyke not being as he appears, maybe Van Dyke\'s son will know more?',
 
@@ -454,6 +554,7 @@ const alexanderPetrov = {
     'Det. Blythe: Blythe: Understood. Thank you for your cooperation, Mr. Petrov.',
     'Alexander: Thank you, Detective.'
   ],
+
 
   accusationExplanation: 'While the evidence may initially raise suspicions about Alexander Petrov\'s involvement in Van Dyke\'s murder, a closer examination reveals inconsistencies. Although Alexander had a diplomatic dispute with Leonard over the ownership of certain paintings, it does not provide a sufficient motive for murder. There is no concrete evidence linking Alexander to the actual theft, also Alexander\'s alibi for the night of the murder is supported by his interaction with Captain Wallace, with whom he shared a history of wartime conflict. Their meeting was an act of reconciliation, unrelated to Leonard\'s murder although politicians have a knack for lying and this could be an attempt by both him and Capt. Wallace to pull at the heart strings and quell suspicions. Additionally, there are no witnesses or substantial evidence placing Alexander at the scene of the crime. ',
 };
@@ -580,3 +681,34 @@ const leonardVanDyke = {
 
   accusationExplanation: ['Ladies and gentlemen, esteemed guests, and my ever-vigilant assistant, Fitzgerald. As we gather here to reflect on the perplexing case of Leonard Van Dyke\'s disappearance, I am compelled to share with you the depths of the enigma we have encountered. Throughout our investigation, we meticulously examined every aspect of the evidence, delving into the motives and alibis of each suspect. Yet, despite our efforts, a fog of uncertainty lingers. One crucial piece of information has come to light. It appears that the doctor aboard this zeppelin, in a rather peculiar act, concealed the fact that Leonard Van Dyke\'s body had mysteriously vanished in the early hours of the morning. This revelation raises the stakes and deepens the intrigue surrounding this case. Moreover, the painting that Leonard cherished so dearly has vanished without a trace, echoing his own disappearance. How could such valuable artifacts vanish from within these walls?']['As we sifted through the clues, we encountered contradictions and inconsistencies that defied easy explanation. Clara Deveraux\'s artistic resentment, Marguerite Fontaine\'s financial troubles, Alexander Petrov\'s diplomatic disputes, Jonathan Van Dyke\'s desperate intentions—all, and Capt. Wallace\'s grudge for a tragedy caused by Leonard himself. All intriguing, yet none fully fitting the puzzle. In light of these perplexities, we must consider the possibility that Leonard Van Dyke\'s disappearance was not a result of happenstance. Instead, it points to a meticulously crafted plan, masterminded by a figure lurking in the shadows. The orchestration of this elaborate scheme leaves us questioning the true nature of events. The evidence before us does not align seamlessly. It seems we are facing an enigma that reaches beyond the confines of a simple murder. A shadowy web of manipulation and deception has been woven, obscuring the truth and leaving us with more questions than answers. Let us embark on this next phase of our investigation with unwavering determination, for the road ahead promises greater challenges and revelations. The truth may be elusive, but we shall not rest until we have unraveled this intricate tapestry of deception and have found Mr. Leonard Van Dyke.'],
 };
+
+  // Displays the conversation based on the question asked
+
+function displayConversation(conversation) {
+
+  let index = 0;
+  displayNextLine();
+
+  function displayNextLine() {
+    if (index < conversation.length) {
+      const line = conversation[index];
+      const newLineElement = document.createElement('p');
+      playerSpeechElement.appendChild(newLineElement);
+      index++;
+  
+      let charIndex = 0;
+      const typeInterval = 25; // Delay between typing each character
+  
+      const typeWriter = setInterval(() => {
+        if (charIndex < line.length) {
+          newLineElement.textContent += line[charIndex];
+          charIndex++;
+        } else {
+          clearInterval(typeWriter);
+          setTimeout(displayNextLine, 1000); // Delay of 1 seconds before displaying the next line
+        }
+      }, typeInterval);
+    }
+  }
+}
+

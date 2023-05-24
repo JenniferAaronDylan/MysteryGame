@@ -21,6 +21,42 @@ function type() {
 
 type();
 
+function User(userName){
+  this.userName = userName;
+  this.Clara = false;
+  this.Marguerite = false;
+  this.Alexander = false;
+  this.Jonathan = false;
+  this.Wallace = false;
+  this.Leonard = false;
+  this.claraEvidence = false;
+  this.claraAlibi = false;
+  this.margueriteEvidence = false;
+  this.margueriteAlibi = false;
+  this.alexanderEvidence = false;
+  this.alexanderAlibi = false;
+  this.jonathanEvidence = false;
+  this.jonathanAlibi = false;
+  this.wallaceEvidence = false;
+  this.wallaceAlibi = false;
+  this.leonardEvidence = false;
+  this.leonardAlibi = false;
+}
+
+User.prototype.updateLocalStorage = function() {
+
+  let stringifiedUser = JSON.stringify(this);
+  localStorage.setItem('currentUser', stringifiedUser);
+
+};
+
+function getUser() {
+  let retrievedUser = localStorage.getItem('currentUser');
+  let parsedUser = JSON.parse(retrievedUser);
+  return parsedUser;
+
+}
+
 // let nameForm = document.getElementById('nameForm');
 // let nameInput = document.getElementById("nameInput");
 
