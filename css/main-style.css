@@ -111,7 +111,7 @@ main {
   max-height: 100%;
   background-image: url('../img/bgPaper.png');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size:cover;
   background-position: center;
   color: black;
   grid-area: 1 / 3 / 2 / 5;
