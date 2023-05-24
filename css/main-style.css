@@ -162,7 +162,7 @@ footer{
 
 
 
-/* LOGBOOK BUTTON */
+/* LOGBOOK BUTTON
 #logbookButton {
   position: fixed;
   top:86px; 
@@ -175,12 +175,12 @@ footer{
   width: 150px;
   border-radius: 10px;
   /* KEEP the index, displays the contents of logbook */
-  z-index: 1000;
+  /* z-index: 1000;
 
-}
+} */
 
 /* NEED TO FIX THE logbook div  */
-#logbook {
+/* #logbook {
   position: fixed;
   padding-top: 100px;
   background-color: #f0f0f0;
@@ -188,29 +188,26 @@ footer{
   border-radius: 4px;
   margin-top: 10px;
   display: grid;
-  place-items: center;
+  place-items: center; */
   /* PLACEHOLDER IMAGE */
   /* background-image: url("img/paper.png");
   background-size: cover; */
-}
+/* } */
 
 
 
-#logbook h3, p {
+/* #logbook h3, p {
   margin: 5px 0;
   padding: 3px;
   background-color: #f7f2f2;
   color: #0d0d0d;
   /* FEEL FREE TO CHANGE STYLING, just a place holder */
-  font-family: cursive;
+  /* font-family: cursive;
   font-size: 15px;
   line-height: 1;
   letter-spacing: 0.50px;
   border-radius: 4px;
-}
-
-
-
+} */ 
 
 
 
