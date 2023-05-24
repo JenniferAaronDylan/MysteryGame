@@ -16,12 +16,12 @@ const evidence = document.getElementById('evidence');
 const askForAlibiButton = document.getElementById('askForAlibi');
 const searchForEvidenceButton = document.getElementById('searchForEvidence');
 
-let clara = false;
-let marguerite = false;
-let alexander = false;
-let jonathan = false;
-let wallace = false;
-let leonard = false;
+let clara = user.Clara;
+let marguerite = user.Marguerite;
+let alexander = user.Alexander;
+let jonathan = user.Jonathan;
+let wallace = user.Wallace;
+let leonard = user.Leonard;
 
 claraDiv.addEventListener('click', claraClick)
 margueriteDiv.addEventListener('click', margueriteClick)
