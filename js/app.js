@@ -1,4 +1,3 @@
-
 'use strict'
 
 // Globals
@@ -12,6 +11,10 @@ const wallaceDiv = document.getElementById('wallace');
 const leonardDiv = document.getElementById('leonard');
 const detectiveDiv= document.getElementById('detective');
 const assistantDiv = document.getElementById('assistant');
+const playerSpeechElement = document.getElementById('playerSpeech');
+const characterSpeechElement = document.getElementById('characterSpeech');
+const askForAlibiButton = document.getElementById('askForAlibi');
+const searchForEvidenceButton = document.getElementById('searchForEvidence');
 
 let clara = false;
 let marguerite = false;
@@ -41,11 +44,11 @@ function User(userName){
 }
 
 User.prototype.updateLocalStorage = function() {
-  
+
   let stringifiedUser = JSON.stringify(this);
   localStorage.setItem('currentUser', stringifiedUser);
 
-}
+};
 
 // Pull user info from local storage
 function getUser() {
@@ -80,6 +83,8 @@ function claraClick() {
     hideImages('clara');
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
+    playerSpeechElement.classList.remove('hidden');
+    characterSpeechElement.classList.remove('hidden');
     clara = true;
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
@@ -87,6 +92,8 @@ function claraClick() {
     revertChanges();
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
+    playerSpeechElement.classList.add('hidden');
+    characterSpeechElement.classList.add('hidden');
     claraDiv.removeEventListener('click', claraClick);
   }
 }
@@ -98,6 +105,8 @@ function margueriteClick() {
     hideImages('marguerite');
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
+    playerSpeechElement.classList.remove('hidden');
+    characterSpeechElement.classList.remove('hidden');
     marguerite = true;
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
@@ -105,6 +114,8 @@ function margueriteClick() {
     revertChanges();
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
+    playerSpeechElement.classList.add('hidden');
+    characterSpeechElement.classList.add('hidden');
     margueriteDiv.removeEventListener('click', margueriteClick);
   }
 }
@@ -116,6 +127,8 @@ function alexanderClick() {
     hideImages('alexander');
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
+    playerSpeechElement.classList.remove('hidden');
+    characterSpeechElement.classList.remove('hidden');
     alexander = true;
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
@@ -123,6 +136,8 @@ function alexanderClick() {
     revertChanges();
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
+    playerSpeechElement.classList.add('hidden');
+    characterSpeechElement.classList.add('hidden');
     alexanderDiv.removeEventListener('click', alexanderClick);
   }
 }
@@ -134,6 +149,8 @@ function jonathanClick() {
     hideImages('jonathan');
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
+    playerSpeechElement.classList.remove('hidden');
+    characterSpeechElement.classList.remove('hidden');
     jonathan = true;
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
@@ -141,6 +158,8 @@ function jonathanClick() {
     revertChanges();
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
+    playerSpeechElement.classList.add('hidden');
+    characterSpeechElement.classList.add('hidden');
     jonathanDiv.removeEventListener('click', jonathanClick);
   }
 }
@@ -152,6 +171,8 @@ function wallaceClick() {
     hideImages('wallace');
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
+    playerSpeechElement.classList.remove('hidden');
+    characterSpeechElement.classList.remove('hidden');
     wallace = true;
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
@@ -159,6 +180,8 @@ function wallaceClick() {
     revertChanges();
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
+    playerSpeechElement.classList.add('hidden');
+    characterSpeechElement.classList.add('hidden');
     wallaceDiv.removeEventListener('click', wallaceClick);
   }
 }
@@ -170,6 +193,8 @@ function leonardClick() {
     hideImages('leonard');
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
+    playerSpeechElement.classList.remove('hidden');
+    characterSpeechElement.classList.remove('hidden');
     leonard = true;
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
@@ -177,9 +202,12 @@ function leonardClick() {
     revertChanges();
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
+    playerSpeechElement.classList.add('hidden');
+    characterSpeechElement.classList.add('hidden');
     leonardDiv.removeEventListener('click', leonardClick);
   }
 }
+
 
 
 
@@ -252,59 +280,57 @@ const claraDeveraux = {
   accusationExplanation: 'Clara\'s resentment towards Van is clear, and her interest in the painting is undeniable. However, she has a strong alibi. The steward vouches for her presence in her quarters during the estimated time of the murder. As well as her passion for art which seems more towards creation rather than destruction or theft. Her guilt is highly unlikely.',
 
   evidenceConversation: [
-    'Good morning, Miss Deveraux, do you mind if I asked you some questions, maybe take a look around your quarters? I\'m sure you\'ve heard about what happened last night.',
+    'Det. Blythe: Good morning, Miss Deveraux, do you mind if I asked you some questions, maybe take a look around your quarters? I\'m sure you\'ve heard about what happened last night.',
     'I did hear, what a tragic loss. And certainly, make yourself at home, it seems you\'re going to regardless.',
-    'Can you explain those paint chips on your dress to me? It appears you\'ve been handling a dry painting.',
+    'Det. Blythe: Can you explain those paint chips on your dress to me? It appears you\'ve been handling a dry painting.',
     'Oh my, what a keen eye... but maybe not so much a keen mind? I\'m a struggling artist darling... I\'ve got to pay my way somehow, after Van tried to destroy my career.',
-    'Paying your way by stealing priceless paintings, maybe?',
+    'Det. Blythe: Paying your way by stealing priceless paintings, maybe?',
     'Hardly... I heard Alexander Petrov was going to be aboard, and since he\'s on the committee overseeing the new National Art Exhibit I figured I could grease the wheels to get prime space of the gallery. So I did a portrait of his wife and daughter.',
-    'Why is there a sketch of the stolen painting in your sketchbook then?',
+    'Det. Blythe: Why is there a sketch of the stolen painting in your sketchbook then?',
     'It\'s a beautiful piece, and even I need inspiration sometimes. Do you have anymore inane questions, detective?',
-    'That\'s all for now, thank-you for your time Miss Deveraux.',
+    'Det. Blythe: That\'s all for now, thank-you for your time Miss Deveraux.',
     'Can\'t say it\'s been a pleasure.',
   ],
   alibiConversation: [
-    'Good morning, Miss Deveraux, do you mind if I asked you some questions? I\'m sure you\'ve heard about what happened last night.',
+    'Det. Blythe: Good morning, Miss Deveraux, do you mind if I asked you some questions? I\'m sure you\'ve heard about what happened last night.',
     'I did hear, what an awful and tragic loss... I suppose.',
-    'Yes, I\'ve heard you\'re not a fan of Leonard. That being said, can you explain your whereabouts last night Miss Deveraux?',
+    'Det. Blythe: Yes, I\'ve heard you\'re not a fan of Leonard. That being said, can you explain your whereabouts last night Miss Deveraux?',
     'I was mingling in the dining hall, keeping up appearances of course. Then retired to my quarters around midnight.',
-    'Can anyone vouch for you\'r whereabouts after you left the party?',
+    'Det. Blythe: Can anyone vouch for you\'r whereabouts after you left the party?',
     'I\'m sure the steward would recall, maybe ask him? He escorted me back.',
-    'Thank you for your cooperation, Miss Deveraux.',
+    'Det. Blythe: Thank you for your cooperation, Miss Deveraux.',
     'I don\'t think this clears me of any suspicion, does it?... Leonard Van is hardly the man he portrays to everyone else. I\'m sure you\'ll see that soon enough.',
   ],
 
 };
 
 
-// Clara HTML Buttons
-<div>
-<button id="askForAlibiButton">Ask about Alibi</button>
-<button id="searchForEvidenceButton">Search for Evidence</button>
-<div id="conversation">
-  <p id="playerSpeech"></p>
-  <p id="characterSpeech"></p>
-</div>
-</div>
+// // Clara HTML Buttons
+// <div>
+// <button id="askForAlibiButton">Ask about Alibi</button>
+// <button id="searchForEvidenceButton">Search for Evidence</button>
+// <div id="conversation">
+//   <p id="playerSpeech"></p>
+//   <p id="characterSpeech"></p>
+// </div>
+// </div>
 
-// Event Listeners for Clara's HTML Buttons
+// // Event Listeners for Clara's HTML Buttons
 
-const askForAlibiButton = document.getElementById('askForAlibi');
-const searchForEvidenceButton = document.getElementById('searchForEvidence');
-const accuseClaraButton = document.getElementById('accuseClara');
+// const askForAlibiButton = document.getElementById('askForAlibi');
+// const searchForEvidenceButton = document.getElementById('searchForEvidence');
+// const accuseClaraButton = document.getElementById('accuseClara');
 
-document.getElementById('askForAlibiButton').addEventListener('click', function() {
-  claraDeveraux.displayConversation(claraDeveraux.alibiConversation);
-});
+// document.getElementById('askForAlibiButton').addEventListener('click', function() {
+//   claraDeveraux.displayConversation(claraDeveraux.alibiConversation);
+// });
 
-document.getElementById('searchForEvidenceButton').addEventListener('click', function() {
-  claraDeveraux.displayConversation(claraDeveraux.evidenceConversation);
-});
+// document.getElementById('searchForEvidenceButton').addEventListener('click', function() {
+//   claraDeveraux.displayConversation(claraDeveraux.evidenceConversation);
+// });
 
   // Displays the conversation based on the question asked
 function displayConversation(conversation) {
-  const playerSpeechElement = document.getElementById('playerSpeech');
-  const characterSpeechElement = document.getElementById('characterSpeech');
   playerSpeechElement.textContent = '';
   characterSpeechElement.textContent = '';
 
@@ -318,15 +344,29 @@ function displayConversation(conversation) {
         characterSpeechElement.textContent += conversation[index];
       }
       index++;
-      setTimeout(displayNextLine, getRandomDelay());
     } else {
       playerSpeechElement.textContent = playerSpeech;
       characterSpeechElement.textContent = characterSpeech;
     }
   }
   displayNextLine();
-  // Natural speech pattern generator
-  function getRandomDelay() {
-    return Math.floor(Math.random() * 1000) + 500;
-  }
 }
+
+// const typer = document.getElementById('intro');
+// let index = 0;
+// let delay = 30;
+
+// function getRandom() {
+//   return Math.floor(Math.random() * 100) + 1;
+// }
+
+// function type() {
+//   if (index < introText.length) {
+//     typer.textContent += introText.charAt(index);
+//     index ++;
+//     setTimeout(type, delay);
+//     delay = getRandom();
+//   }
+// }
+
+// type();
