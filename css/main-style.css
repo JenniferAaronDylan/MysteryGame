@@ -42,7 +42,7 @@
 
 main {
   width: 95%;
-  height: 100%;
+  height: 80%;
   margin: 3rem auto;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -73,36 +73,28 @@ main {
   display: none !important;
 }
 
-#characterSpeech {
-  width:2fr;
-  height:100%;
-  background-color:red;
-  color: black;
-  grid-area: 1 / 2 / 2 / 4;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-    
-}
 
 #playerSpeech {
-  width:2fr;
-  height:100%;
-  background-color:blue;
+  max-height: 100%;
+  background-image: url('../img/bgPaper.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   color: black;
-  grid-area: 1 / 4 / 2 / 6;
+  grid-area: 1 / 3 / 2 / 5;
   display:flex;
-  align-items: center;
+  flex-direction:column;
+  align-items: flex-start
   justify-content:center;
+  overflow: auto;
+  padding:10px;
 }
 
-.speech-bubble {
-  position: relative;
-  display: inline-block;
-  background-color: #f1f1f1;
-  border-radius: 8px;
-  padding: 10px;
+#playerSpeech > p {
+  font-size: small;
 }
+
+
 
 #clara {
   grid-area: 2 / 1 / 3 / 2;
@@ -152,6 +144,33 @@ main {
   width: 1fr;
 }
 
+#evidence {
+  grid-area: 2 / 3 / 3 / 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#evidence button {
+  width: 40%;
+  height: 15%;
+  padding: 10px 20px;
+  background-color: #b62e2e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#evidence button:hover {
+  background-color: #0056b3;
+}
+
+#evidence button:focus {
+  outline: none;
+}
+
 main div img {
   max-width:100%;
   height:auto;
@@ -168,12 +187,7 @@ footer{
   height:80px;
 }
 
-/* .grid-button {
-  grid-area: 4 / 1 / 5 / 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
+
 
 .grid-button button {
   padding: 10px 20px;
@@ -184,11 +198,9 @@ footer{
   cursor: pointer;
 }
 
-/* LOGBOOK BUTTON */
-.hidden {
-  display: none;
-}
-
+/* #alibi {
+  grid-area: 2 / 3 / 3 / 4
+} */
 
 
 

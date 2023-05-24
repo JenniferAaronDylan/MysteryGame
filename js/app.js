@@ -1,7 +1,7 @@
 'use strict'
 
 // Globals
-const user = getUser();
+const user = new User(getUser());
 const mainBackground = document.querySelector('main');
 const claraDiv = document.getElementById('clara');
 const margueriteDiv = document.getElementById('marguerite');
@@ -12,7 +12,7 @@ const leonardDiv = document.getElementById('leonard');
 const detectiveDiv= document.getElementById('detective');
 const assistantDiv = document.getElementById('assistant');
 const playerSpeechElement = document.getElementById('playerSpeech');
-const characterSpeechElement = document.getElementById('characterSpeech');
+const evidence = document.getElementById('evidence');
 const askForAlibiButton = document.getElementById('askForAlibi');
 const searchForEvidenceButton = document.getElementById('searchForEvidence');
 
@@ -33,14 +33,16 @@ leonardDiv.addEventListener('click', leonardClick)
 // User Constructor
 // To Do.  In submission handler for username, check local storage.  If username exists, start game from previous state.
 
-function User(userName){
-  this.userName = userName;
-  this.Clara = false;
-  this.Marguerite = false;
-  this.Alexander = false;
-  this.Jonathan = false;
-  this.Wallace = false;
-  this.Leonard = false;
+function User(user){
+  this.userName = user.userName;
+  this.Clara = user.Clara;
+  this.Marguerite = user.Marguerite;
+  this.Alexander = user.Alexander;
+  this.Jonathan = user.Jonathan;
+  this.Wallace = user.Wallace;
+  this.Leonard = user.Leonard;
+  this.claraEvidence = user.claraEvidence;
+  this.claraAlibi = user.claraAlibi;
 }
 
 User.prototype.updateLocalStorage = function() {
@@ -84,8 +86,10 @@ function claraClick() {
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
     playerSpeechElement.classList.remove('hidden');
-    characterSpeechElement.classList.remove('hidden');
+    evidence.classList.remove('hidden');
     clara = true;
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     claraDiv.style.gridArea = '2 / 1 / 3 / 2';
@@ -93,8 +97,10 @@ function claraClick() {
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
     playerSpeechElement.classList.add('hidden');
-    characterSpeechElement.classList.add('hidden');
+    evidence.classList.add('hidden');
     claraDiv.removeEventListener('click', claraClick);
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   }
 }
 
@@ -106,8 +112,10 @@ function margueriteClick() {
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
     playerSpeechElement.classList.remove('hidden');
-    characterSpeechElement.classList.remove('hidden');
+    evidence.classList.remove('hidden');
     marguerite = true;
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     margueriteDiv.style.gridArea = '2 / 2 / 3 / 3';
@@ -115,8 +123,10 @@ function margueriteClick() {
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
     playerSpeechElement.classList.add('hidden');
-    characterSpeechElement.classList.add('hidden');
+    evidence.classList.add('hidden');
     margueriteDiv.removeEventListener('click', margueriteClick);
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   }
 }
 
@@ -128,8 +138,10 @@ function alexanderClick() {
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
     playerSpeechElement.classList.remove('hidden');
-    characterSpeechElement.classList.remove('hidden');
+    evidence.classList.remove('hidden');
     alexander = true;
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     alexanderDiv.style.gridArea = '2 / 3 / 3 / 4';
@@ -137,8 +149,10 @@ function alexanderClick() {
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
     playerSpeechElement.classList.add('hidden');
-    characterSpeechElement.classList.add('hidden');
+    evidence.classList.add('hidden');
     alexanderDiv.removeEventListener('click', alexanderClick);
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   }
 }
 
@@ -150,8 +164,10 @@ function jonathanClick() {
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
     playerSpeechElement.classList.remove('hidden');
-    characterSpeechElement.classList.remove('hidden');
+    evidence.classList.remove('hidden');
     jonathan = true;
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     jonathanDiv.style.gridArea = '2 / 4 / 3 / 5';
@@ -159,8 +175,10 @@ function jonathanClick() {
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
     playerSpeechElement.classList.add('hidden');
-    characterSpeechElement.classList.add('hidden');
+    evidence.classList.add('hidden');
     jonathanDiv.removeEventListener('click', jonathanClick);
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   }
 }
 
@@ -172,8 +190,10 @@ function wallaceClick() {
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
     playerSpeechElement.classList.remove('hidden');
-    characterSpeechElement.classList.remove('hidden');
+    evidence.classList.remove('hidden');
     wallace = true;
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     wallaceDiv.style.gridArea = '2 / 5 / 3 / 6';
@@ -181,8 +201,10 @@ function wallaceClick() {
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
     playerSpeechElement.classList.add('hidden');
-    characterSpeechElement.classList.add('hidden');
+    evidence.classList.add('hidden');
     wallaceDiv.removeEventListener('click', wallaceClick);
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   }
 }
 
@@ -194,8 +216,10 @@ function leonardClick() {
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
     playerSpeechElement.classList.remove('hidden');
-    characterSpeechElement.classList.remove('hidden');
+    evidence.classList.remove('hidden');
     leonard = true;
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   } else {
     mainBackground.style.backgroundImage = 'url("../img/airship 1.png")';
     leonardDiv.style.gridArea = '2 / 6 / 3 / 7';
@@ -203,12 +227,35 @@ function leonardClick() {
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
     playerSpeechElement.classList.add('hidden');
-    characterSpeechElement.classList.add('hidden');
+    evidence.classList.add('hidden');
     leonardDiv.removeEventListener('click', leonardClick);
+    askForAlibiButton.addEventListener('click', alibiClick);
+    searchForEvidenceButton.addEventListener('click', evidenceClick);
   }
 }
 
+function alibiClick() {
+  askForAlibiButton.removeEventListener('click', alibiClick);
+  searchForEvidenceButton.removeEventListener('click', evidenceClick);
+  if (clara === true) {
+    displayConversation(claraDeveraux.alibiConversation);
+    user.claraAlibi = claraDeveraux.additionalAlibi;
+    user.Clara = true;
+    user.updateLocalStorage();
+  }  
+}
 
+function evidenceClick() {
+  askForAlibiButton.removeEventListener('click', alibiClick);
+  searchForEvidenceButton.removeEventListener('click', evidenceClick);
+  if (clara === true ) {
+    displayConversation(claraDeveraux.evidenceConversation);
+    user.claraEvidence = claraDeveraux.additionalEvidence;
+    user.Clara = true;
+    user.updateLocalStorage();
+  }
+
+}
 
 
 
@@ -306,14 +353,6 @@ const claraDeveraux = {
 
 
 // // Clara HTML Buttons
-// <div>
-// <button id="askForAlibiButton">Ask about Alibi</button>
-// <button id="searchForEvidenceButton">Search for Evidence</button>
-// <div id="conversation">
-//   <p id="playerSpeech"></p>
-//   <p id="characterSpeech"></p>
-// </div>
-// </div>
 
 // // Event Listeners for Clara's HTML Buttons
 
@@ -330,43 +369,31 @@ const claraDeveraux = {
 // });
 
   // Displays the conversation based on the question asked
+
 function displayConversation(conversation) {
-  playerSpeechElement.textContent = '';
-  characterSpeechElement.textContent = '';
 
   let index = 0;
+  displayNextLine();
 
   function displayNextLine() {
     if (index < conversation.length) {
-      if (index % 2 === 0) {
-        playerSpeechElement.textContent += conversation[index];
-      } else {
-        characterSpeechElement.textContent += conversation[index];
-      }
+      const line = conversation[index];
+      const newLineElement = document.createElement('p');
+      playerSpeechElement.appendChild(newLineElement);
       index++;
-    } else {
-      playerSpeechElement.textContent = playerSpeech;
-      characterSpeechElement.textContent = characterSpeech;
+  
+      let charIndex = 0;
+      const typeInterval = 25; // Delay between typing each character
+  
+      const typeWriter = setInterval(() => {
+        if (charIndex < line.length) {
+          newLineElement.textContent += line[charIndex];
+          charIndex++;
+        } else {
+          clearInterval(typeWriter);
+          setTimeout(displayNextLine, 1000); // Delay of 1 seconds before displaying the next line
+        }
+      }, typeInterval);
     }
   }
-  displayNextLine();
 }
-
-// const typer = document.getElementById('intro');
-// let index = 0;
-// let delay = 30;
-
-// function getRandom() {
-//   return Math.floor(Math.random() * 100) + 1;
-// }
-
-// function type() {
-//   if (index < introText.length) {
-//     typer.textContent += introText.charAt(index);
-//     index ++;
-//     setTimeout(type, delay);
-//     delay = getRandom();
-//   }
-// }
-
-// type();
