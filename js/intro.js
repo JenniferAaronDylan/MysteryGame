@@ -31,6 +31,16 @@ function User(userName){
   this.Leonard = false;
   this.claraEvidence = false;
   this.claraAlibi = false;
+  this.margueriteEvidence = false;
+  this.margueriteAlibi = false;
+  this.alexanderEvidence = false;
+  this.alexanderAlibi = false;
+  this.jonathanEvidence = false;
+  this.jonathanAlibi = false;
+  this.wallaceEvidence = false;
+  this.wallaceAlibi = false;
+  this.leonardEvidence = false;
+  this.leonardAlibi = false;
 }
 
 User.prototype.updateLocalStorage = function() {

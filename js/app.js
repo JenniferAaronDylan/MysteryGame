@@ -57,6 +57,16 @@ function User(user){
   this.Leonard = user.Leonard;
   this.claraEvidence = user.claraEvidence;
   this.claraAlibi = user.claraAlibi;
+  this.margueriteEvidence = user.margueriteEvidence;
+  this.margueriteAlibi = user.margueriteAlibi;
+  this.alexanderEvidence = user.alexanderEvidence;
+  this.alexanderAlibi = user.alexanderAlibi;
+  this.jonathanEvidence = user.jonathanEvidence;
+  this.jonathanAlibi = user.jonathanAlibi;
+  this.wallaceEvidence = user.wallaceEvidence;
+  this.wallaceAlibi = user.wallaceAlibi;
+  this.leonardEvidence = user.leonardEvidence;
+  this.leonardAlibi = user.leonardAlibi;
 }
 
 User.prototype.updateLocalStorage = function() {
