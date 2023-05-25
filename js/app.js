@@ -1,7 +1,6 @@
-'use strict'
+'use strict';
 
 // Globals
-// const user = new User(getUser());
 const mainBackground = document.querySelector('main');
 const claraDiv = document.getElementById('clara');
 const margueriteDiv = document.getElementById('marguerite');
@@ -22,8 +21,17 @@ const accuseAlexander = document.getElementById('accuseAlexander');
 const accuseJonathan = document.getElementById('accuseJonathan');
 const accuseWallace = document.getElementById('accuseWallace');
 const accuseLeonard = document.getElementById('accuseLeonard');
+const claraLog = document.getElementById('claraLogBook');
+const margLog = document.getElementById('margLogBook');
+const alexLog = document.getElementById('alexLogBook');
+const jonLog = document.getElementById('jonLogBook');
+const wallaceLog = document.getElementById('wallaceLogBook');
+const noteBook = document.getElementById('open-notebook');
+const logbook1 = document.getElementById("logbook-1");
+const logbook2 = document.getElementById("logbook-2");
 
 let user;
+let logOpen = false;
 
 
 
@@ -66,6 +74,14 @@ if (user.Leonard === false) {
   leonardDiv.addEventListener('click', leonardClick)
 }
 
+// Reset all values to false so our alibi and evidence functions don't think we are in a cutscene
+clara = false;
+marguerite = false;
+alexander = false;
+jonathan = false;
+wallace = false;
+leonard = false;
+
 accuseClara.addEventListener('click', claraAccusation);
 accuseMarguerite.addEventListener('click', margueriteAccusation);
 accuseAlexander.addEventListener('click', alexanderAccusation);
@@ -74,7 +90,6 @@ accuseWallace.addEventListener('click', wallaceAccusation);
 accuseLeonard.addEventListener('click', leonardAccusation);
 
 // User Constructor
-// To Do.  In submission handler for username, check local storage.  If username exists, start game from previous state.
 
 function User(user){
   this.userName = user.userName;
@@ -123,6 +138,11 @@ function revertChanges() {
   });
 }
 
+function hideLogText() {
+  logbook1.classList.add('hidden');
+  logbook2.classList.add('hidden');
+}
+
 function claraClick() {
   if (clara === false) {
     mainBackground.style.backgroundImage = 'url("../img/airship 2.png")';
@@ -151,6 +171,7 @@ function claraClick() {
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
     accuseDiv.classList.remove('hidden');
+    hideLogText();
     clara = false;
   }
 }
@@ -183,6 +204,7 @@ function margueriteClick() {
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
     accuseDiv.classList.remove('hidden');
+    hideLogText()
     marguerite = false;
   }
 }
@@ -215,6 +237,7 @@ function alexanderClick() {
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
     accuseDiv.classList.remove('hidden');
+    hideLogText();
     alexander = false;
   }
 }
@@ -247,6 +270,7 @@ function jonathanClick() {
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
     accuseDiv.classList.remove('hidden');
+    hideLogText();
     jonathan = false;
   }
 }
@@ -279,6 +303,7 @@ function wallaceClick() {
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
     accuseDiv.classList.remove('hidden');
+    hideLogText();
     wallace = false;
   }
 }
@@ -308,6 +333,7 @@ function leonardClick() {
     leonardDiv.removeEventListener('click', leonardClick);
     accuseDiv.classList.remove('hidden');
     evidence.classList.add('hidden');
+    hideLogText();
     leonard = false;
     user.updateLocalStorage();
   }
@@ -527,12 +553,6 @@ function leonardAccusation() {
 
 
 
-
-
-
-
-
-
   // Displays the conversation based on the question asked
 function displayConversation(conversation) {
 
@@ -554,48 +574,6 @@ function displayConversation(conversation) {
   displayNextLine();
 }
 
-// const typer = document.getElementById('intro');
-// let index = 0;
-// let delay = 30;
-
-// function getRandom() {
-//   return Math.floor(Math.random() * 100) + 1;
-// }
-
-// function type() {
-//   if (index < introText.length) {
-//     typer.textContent += introText.charAt(index);
-//     index ++;
-//     setTimeout(type, delay);
-//     delay = getRandom();
-//   }
-// }
-
-// type();
-
-// // Clara HTML Buttons
-// <div>
-// <button id="askForAlibiButton">Ask about Alibi</button>
-// <button id="searchForEvidenceButton">Search for Evidence</button>
-// <div id="conversation">
-//   <p id="playerSpeech"></p>
-//   <p id="characterSpeech"></p>
-// </div>
-// </div>
-
-// // Event Listeners for Clara's HTML Buttons
-
-// const askForAlibiButton = document.getElementById('askForAlibi');
-// const searchForEvidenceButton = document.getElementById('searchForEvidence');
-// const accuseClaraButton = document.getElementById('accuseClara');
-
-// document.getElementById('askForAlibiButton').addEventListener('click', function() {
-//   claraDeveraux.displayConversation(claraDeveraux.alibiConversation);
-// });
-
-// document.getElementById('searchForEvidenceButton').addEventListener('click', function() {
-//   claraDeveraux.displayConversation(claraDeveraux.evidenceConversation);
-// });
 
 
 // Character Objects
@@ -855,7 +833,7 @@ const leonardVanDyke = {
   accusationExplanation: ['Ladies and gentlemen, esteemed guests, and my ever-vigilant assistant, Fitzgerald. As we gather here to reflect on the perplexing case of Leonard Van Dyke\'s disappearance, I am compelled to share with you the depths of the enigma we have encountered. Throughout our investigation, we meticulously examined every aspect of the evidence, delving into the motives and alibis of each suspect. Yet, despite our efforts, a fog of uncertainty lingers. One crucial piece of information has come to light. It appears that the doctor aboard this zeppelin, in a rather peculiar act, concealed the fact that Leonard Van Dyke\'s body had mysteriously vanished in the early hours of the morning. This revelation raises the stakes and deepens the intrigue surrounding this case. Moreover, the painting that Leonard cherished so dearly has vanished without a trace, echoing his own disappearance. How could such valuable artifacts vanish from within these walls?','As we sifted through the clues, we encountered contradictions and inconsistencies that defied easy explanation. Clara Deveraux\'s artistic resentment, Marguerite Fontaine\'s financial troubles, Alexander Petrov\'s diplomatic disputes, Jonathan Van Dyke\'s desperate intentions—all, and Capt. Wallace\'s grudge for a tragedy caused by Leonard himself. All intriguing, yet none fully fitting the puzzle. In light of these perplexities, we must consider the possibility that Leonard Van Dyke\'s disappearance was not a result of happenstance. Instead, it points to a meticulously crafted plan, masterminded by a figure lurking in the shadows. The orchestration of this elaborate scheme leaves us questioning the true nature of events. The evidence before us does not align seamlessly. It seems we are facing an enigma that reaches beyond the confines of a simple murder. A shadowy web of manipulation and deception has been woven, obscuring the truth and leaving us with more questions than answers. Let us embark on this next phase of our investigation with unwavering determination, for the road ahead promises greater challenges and revelations. The truth may be elusive, but we shall not rest until we have unraveled this intricate tapestry of deception and have found Mr. Leonard Van Dyke.'],
 };
 
-  // Displays the conversation based on the question asked
+// Displays the conversation based on the question asked
 
 function displayConversation(conversation) {
 
@@ -868,10 +846,10 @@ function displayConversation(conversation) {
       const newLineElement = document.createElement('p');
       playerSpeechElement.appendChild(newLineElement);
       index++;
-  
+
       let charIndex = 0;
       const typeInterval = 10; // Delay between typing each character
-  
+
       const typeWriter = setInterval(() => {
         if (charIndex < line.length) {
           newLineElement.textContent += line[charIndex];
@@ -884,4 +862,132 @@ function displayConversation(conversation) {
     }
   }
 }
+
+// Logbook Functions
+function logClara() {
+  while(claraLog.firstChild) {
+    claraLog.removeChild(claraLog.firstChild);
+  }
+  const evidence = document.createElement('p');
+  const alibi = document.createElement('p');
+  evidence.innerText = `Clara's Evidence: ${claraDeveraux.evidence}`;
+  alibi.innerText = `Clara's Alibi: ${claraDeveraux.alibi}`;
+  claraLog.appendChild(evidence);
+  claraLog.appendChild(alibi);
+  if (user.claraAlibi) {
+    const paragraph = document.createElement('p');
+    paragraph.innerText = 'Additional Clara Alibi: ' + user.claraAlibi;
+    claraLog.appendChild(paragraph);
+  } else if (user.claraEvidence) {
+    const paragraph = document.createElement('p');
+    paragraph.innerText = 'Additional Clara Evidence: ' + user.claraEvidence;
+    claraLog.appendChild(paragraph);
+  }
+}
+
+function logMarguerite() {
+  while(margLog.firstChild) {
+    margLog.removeChild(margLog.firstChild);
+  }
+  const evidence = document.createElement('p');
+  const alibi = document.createElement('p');
+  evidence.innerText = `Marguerite's Evidence: ${margueriteFontaine.evidence}`;
+  alibi.innerText = `Marguerite's Alibi: ${margueriteFontaine.alibi}`;
+  margLog.appendChild(evidence);
+  margLog.appendChild(alibi);
+
+  if (user.margueriteAlibi) {
+    const paragraph = document.createElement('p');
+    paragraph.innerText = 'Additional Marguerite Alibi: ' + user.margueriteAlibi;
+    margLog.appendChild(paragraph);
+  } else if (user.margueriteEvidence) {
+    const paragraph = document.createElement('p');
+    paragraph.innerText = 'Additional Marguerite Evidence: ' + user.margueriteEvidence;
+    margLog.appendChild(paragraph);
+  }
+}
+
+function logAlexander() {
+  while(alexLog.firstChild) {
+    alexLog.removeChild(alexLog.firstChild);
+  }
+  const evidence = document.createElement('p');
+  const alibi = document.createElement('p');
+  evidence.innerText = `Alexander's Evidence: ${alexanderPetrov.evidence}`;
+  alibi.innerText = `Alexander's Alibi: ${alexanderPetrov.alibi}`;
+  alexLog.appendChild(evidence);
+  alexLog.appendChild(alibi);
+  if (user.alexanderAlibi) {
+    const paragraph = document.createElement('p');
+    paragraph.innerText = 'Additional Alexander Alibi: ' + user.alexanderAlibi;
+    alexLog.appendChild(paragraph);
+  } else if (user.alexanderEvidence) {
+    const paragraph = document.createElement('p');
+    paragraph.innerText = 'Additional Alexander Evidence: ' + user.alexanderEvidence;
+    alexLog.appendChild(paragraph);
+  }
+}
+
+function logJonathon() {
+  while(jonLog.firstChild) {
+    jonLog.removeChild(jonLog.firstChild);
+  }
+  const evidence = document.createElement('p');
+  const alibi = document.createElement('p');
+  evidence.innerText = `Jonathan's Evidence: ${jonathanVanDyke.evidence}`;
+  alibi.innerText = `Jonathan's Alibi: ${jonathanVanDyke.alibi}`;
+  jonLog.appendChild(evidence);
+  jonLog.appendChild(alibi);
+  if (user.jonathanAlibi) {
+    const paragraph = document.createElement('p');
+    paragraph.innerText = 'Additional Jonathan Alibi: ' + user.jonathanAlibi;
+    jonLog.appendChild(paragraph);
+  } else if (user.jonathanEvidence) {
+    const paragraph = document.createElement('p');
+    paragraph.innerText = 'Additional Jonathan Evidence: ' + user.jonathanEvidence;
+    jonLog.appendChild(paragraph);
+  }
+}
+// logJonathon();
+function logWallace() {
+  while(wallaceLog.firstChild) {
+    wallaceLog.removeChild(wallaceLog.firstChild);
+  }
+  const evidence = document.createElement('p');
+  const alibi = document.createElement('p');
+  evidence.innerText = `Wallace's Evidence: ${captainWallace.evidence}`;
+  alibi.innerText = `Wallace's Alibi: ${captainWallace.alibi}`;
+  wallaceLog.appendChild(evidence);
+  wallaceLog.appendChild(alibi);
+  if (user.wallaceAlibi) {
+    const paragraph = document.createElement('p');
+    paragraph.innerText = 'Additional Wallace Alibi: ' + user.wallaceAlibi;
+    wallaceLog.appendChild(paragraph);
+  } else if (user.wallaceEvidence) {
+    const paragraph = document.createElement('p');
+    paragraph.innerText = 'Additional Wallace Evidence: ' + user.wallaceEvidence;
+    wallaceLog.appendChild(paragraph);
+  }
+}
+
+function openLogBook() {
+  if (logOpen === false) {
+    logbook1.classList.remove('hidden');
+    logbook2.classList.remove('hidden');
+    logClara();
+    logMarguerite();
+    logAlexander();
+    logJonathon();
+    logWallace();
+    noteBook.classList.remove('hidden');
+    logOpen = true;
+  } else {
+    logOpen = false;
+    logbook1.classList.add('hidden');
+    logbook2.classList.add('hidden');
+    noteBook.classList.add('hidden');
+
+  }
+}
+
 

@@ -51,32 +51,28 @@
       <button id="askForAlibi">Ask For Alibi</button>
       <button id="searchForEvidence">Search For Evidence</button>
     </div>
-
-    <div id="logbook" class="grid-button">
-      <button>Logbook</button>
-
-       <!-- LOGBOOK BUTTON BEGINNING -->
-   <!-- <div id="logbook" class="grid-button">
-     <button>Logbook</button> -->
-     <!-- Start here -->
-     <!-- <button id="logbookButton" onclick="openLogBook()">Log-Book</button>
-     <div id="logbook">
-       <h3>Evidence and Alibi of Characters:</h3>
-       <p id="clara-evidence"></p>
-       <p id="clara-alibi"></p>
-       <p id="marg-evidence"></p>
-       <p id="marg-alibi"></p>
-       <p id="marg-evidence"></p>
-       <p id="marg-alibi"></p>
-       <p id="alex-evidence"></p>
-       <p id="alex-alibi"></p>
-       <p id="jon-evidence"></p>
-       <p id="jon-alibi"></p>
-       <p id="wallace-evidence"></p>
-       <p id="wallace-alibi"></p>
-       <p id="leonard-evidence"></p>
-       <p id="leonard-alibi"></p>
-     </div> -->
+    <div id="logbook-container">
+      <button id="logbookButton" onclick="openLogBook()">
+        <img src="img/redNotebook.png" alt="">
+      </button>
+      <h3 id="LogText">Open Logbook</h3>
+    </div>
+    <div class="hidden" id="logbook-1">
+      <h3>Evidence and Alibi of Characters:</h3>
+      <article id="claraLogBook">
+      </article>
+      <article id="margLogBook">
+      </article>
+      <article id="alexLogBook">
+      </article>
+    </div>
+    <div class="hidden" id="logbook-2">
+      <article id="jonLogBook">
+      </article>
+      <article id="wallaceLogBook">
+      </article>
+    </div>
+    <img class="hidden" id="open-notebook" src="img/openNotebook.png" alt="">
      <!-- LOGBOOK END -->
     </div>
   </main>
@@ -84,6 +80,5 @@
     <button id="accuseClara">Accuse Clara</button><button id="accuseMarguerite">Accuse Marguerite</button><button id="accuseAlexander">Accuse Alexander</button><button id="accuseJonathan">Accuse Jonathan</button><button id=accuseWallace>Accuse Wallace</button><button id="accuseLeonard">Accuse Leonard</button>
   </section>
   <script src="js/app.js"></script>
-  <!-- <script src="js/jen.js"></script> -->
 </body>
 </html>
