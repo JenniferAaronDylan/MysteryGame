@@ -31,12 +31,12 @@ let wallace = user.Wallace;
 let leonard = user.Leonard;
 let guesses = 3;
 
-claraDiv.addEventListener('click', claraClick)
-margueriteDiv.addEventListener('click', margueriteClick)
-alexanderDiv.addEventListener('click', alexanderClick)
-jonathanDiv.addEventListener('click', jonathanClick)
-wallaceDiv.addEventListener('click', wallaceClick)
-leonardDiv.addEventListener('click', leonardClick)
+claraDiv.addEventListener('click', claraClick);
+margueriteDiv.addEventListener('click', margueriteClick);
+alexanderDiv.addEventListener('click', alexanderClick);
+jonathanDiv.addEventListener('click', jonathanClick);
+wallaceDiv.addEventListener('click', wallaceClick);
+leonardDiv.addEventListener('click', leonardClick);
 accuseClara.addEventListener('click', claraAccusation);
 accuseMarguerite.addEventListener('click', margueriteAccusation);
 accuseAlexander.addEventListener('click', alexanderAccusation);
