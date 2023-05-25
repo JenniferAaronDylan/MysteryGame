@@ -1,11 +1,11 @@
 'use strict';
 
-let introText = 'The Story So Far: In the heart of the roaring 20s, a group of diverse individuals finds themselves on a late-night journey on the luxurious transatlantic Zeppelin, The Sky Empress. As they soar over the Atlantic, the renowned millionaire and art collector, Leonard Van Dyke, is found dead in his private cabin, and a priceless painting missing. Among the passengers, the detective Frederick Blythe takes it upon himself to investigate. Suspects include a disgruntled artist, a wealthy heiress, a mysterious foreign diplomat, Van Dyke\'s estranged son, and the zeppelin\'s enigmatic captain. One by one, Blythe interviews each suspect and discovers each had a reason to wish Van Dyke harm. As the plot thickens, Blythe finds a cryptic note in Van Dyke\'s cabin reading, “Art is an illusion. So am I.”';
+
+let introText = 'The Story So Far: In the heart of the roaring 20s, a group of diverse individuals finds themselves on a late-night journey on the luxurious transatlantic zeppelin, The Sky Empress on her maiden voyage. As she soars over, and miles above the Atlantic the beloved adventurer, Leonard Van Dyke, is found dead in his private cabin, and a priceless painting missing. Among the passengers the renowned detective Frederick Blythe and his enigmatic assistant Riley Fitzgerald takes it upon themselves to investigate. Suspects include a disgruntled artist, a wealthy heiress, a foreign diplomat, Van Dyke\'s estranged son, and the zeppelin\'s stalwart captain. One by one, Blythe interviews each suspect and discovers each had a reason to wish Van Dyke harm. But will Blythe and Fitzgerald unravel this mystery, or will the truth forever remain... among the clouds?”';
 
 const typer = document.getElementById('intro');
 let index = 0;
 let delay = 10;
-
 
 function type() {
   if (index < introText.length) {
