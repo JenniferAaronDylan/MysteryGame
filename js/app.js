@@ -145,7 +145,7 @@ function hideLogText() {
 
 function claraClick() {
   if (clara === false) {
-    mainBackground.style.backgroundImage = 'url("../img/airship-2.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship2.png")';
     claraDiv.style.gridArea = '2 / 2 / 3 / 3';
     hideImages('clara');
     detectiveDiv.classList.remove('hidden');
@@ -160,7 +160,7 @@ function claraClick() {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
     }
-    mainBackground.style.backgroundImage = 'url("../img/airship-1.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship1.png")';
     claraDiv.style.gridArea = '2 / 1 / 3 / 2';
     revertChanges();
     detectiveDiv.classList.add('hidden');
@@ -178,7 +178,7 @@ function claraClick() {
 
 function margueriteClick() {
   if (marguerite === false) {
-    mainBackground.style.backgroundImage = 'url("../img/airship-3.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship3.png")';
     margueriteDiv.style.gridArea = '2 / 2 / 3 / 3';
     hideImages('marguerite');
     detectiveDiv.classList.remove('hidden');
@@ -193,7 +193,7 @@ function margueriteClick() {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
     }
-    mainBackground.style.backgroundImage = 'url("../img/airship-1.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship1.png")';
     margueriteDiv.style.gridArea = '2 / 2 / 3 / 3';
     revertChanges();
     detectiveDiv.classList.add('hidden');
@@ -211,7 +211,7 @@ function margueriteClick() {
 
 function alexanderClick() {
   if (alexander === false) {
-    mainBackground.style.backgroundImage = 'url("../img/airship-4.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship4.png")';
     alexanderDiv.style.gridArea = '2 / 2 / 3 / 3';
     hideImages('alexander');
     detectiveDiv.classList.remove('hidden');
@@ -226,7 +226,7 @@ function alexanderClick() {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
     }
-    mainBackground.style.backgroundImage = 'url("../img/airship-1.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship1.png")';
     alexanderDiv.style.gridArea = '2 / 3 / 3 / 4';
     revertChanges();
     detectiveDiv.classList.add('hidden');
@@ -244,7 +244,7 @@ function alexanderClick() {
 
 function jonathanClick() {
   if (jonathan === false) {
-    mainBackground.style.backgroundImage = 'url("../img/airship-5.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship5.png")';
     jonathanDiv.style.gridArea = '2 / 2 / 3 / 3';
     hideImages('jonathan');
     detectiveDiv.classList.remove('hidden');
@@ -259,7 +259,7 @@ function jonathanClick() {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
     }
-    mainBackground.style.backgroundImage = 'url("../img/airship-1.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship1.png")';
     jonathanDiv.style.gridArea = '2 / 4 / 3 / 5';
     revertChanges();
     detectiveDiv.classList.add('hidden');
@@ -277,7 +277,7 @@ function jonathanClick() {
 
 function wallaceClick() {
   if (wallace === false) {
-    mainBackground.style.backgroundImage = 'url("../img/airship-6.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship6.png")';
     wallaceDiv.style.gridArea = '2 / 2 / 3 / 3';
     hideImages('wallace');
     detectiveDiv.classList.remove('hidden');
@@ -292,7 +292,7 @@ function wallaceClick() {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
     }
-    mainBackground.style.backgroundImage = 'url("../img/airship-1.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship1.png")';
     wallaceDiv.style.gridArea = '2 / 5 / 3 / 6';
     revertChanges();
     detectiveDiv.classList.add('hidden');
@@ -310,7 +310,7 @@ function wallaceClick() {
 
 function leonardClick() {
   if (leonard === false) {
-    mainBackground.style.backgroundImage = 'url("../img/airship-7.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship7.png")';
     leonardDiv.style.gridArea = '2 / 2 / 3 / 3';
     hideImages('leonard');
     detectiveDiv.classList.remove('hidden');
@@ -324,7 +324,7 @@ function leonardClick() {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
     }
-    mainBackground.style.backgroundImage = 'url("../img/airship-1.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship1.png")';
     leonardDiv.style.gridArea = '2 / 6 / 3 / 7';
     revertChanges();
     detectiveDiv.classList.add('hidden');
@@ -407,7 +407,7 @@ function claraAccusation() {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
     }
-    mainBackground.style.backgroundImage = 'url("../img/airship-8.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship8.png")';
     claraDiv.style.gridArea = '2 / 2 / 3 / 3';
     claraDiv.classList.remove('hidden');
     hideImages('clara');
@@ -425,7 +425,7 @@ function margueriteAccusation() {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
     }
-    mainBackground.style.backgroundImage = 'url("../img/airship-8.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship8.png")';
     margueriteDiv.style.gridArea = '2 / 2 / 3 / 3';
     margueriteDiv.classList.remove('hidden');
     hideImages('marguerite');
@@ -443,7 +443,7 @@ function alexanderAccusation() {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
     }
-    mainBackground.style.backgroundImage = 'url("../img/airship-8.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship8.png")';
     alexanderDiv.style.gridArea = '2 / 2 / 3 / 3';
     alexanderDiv.classList.remove('hidden');
     hideImages('alexander');
@@ -461,7 +461,7 @@ function jonathanAccusation() {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
     }
-    mainBackground.style.backgroundImage = 'url("../img/airship-8.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship8.png")';
     jonathanDiv.style.gridArea = '2 / 2 / 3 / 3';
     jonathanDiv.classList.remove('hidden');
     hideImages('jonathan');
@@ -479,7 +479,7 @@ function wallaceAccusation() {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
     }
-    mainBackground.style.backgroundImage = 'url("../img/airship-8.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship8.png")';
     wallaceDiv.style.gridArea = '2 / 2 / 3 / 3';
     wallaceDiv.classList.remove('hidden');
     hideImages('wallace');
@@ -497,7 +497,7 @@ function leonardAccusation() {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
     }
-    mainBackground.style.backgroundImage = 'url("../img/airship-8.png")';
+    mainBackground.style.backgroundImage = 'url("../img/airship8.png")';
     leonardDiv.style.gridArea = '2 / 2 / 3 / 3';
     leonardDiv.classList.remove('hidden');
     hideImages('leonard');
