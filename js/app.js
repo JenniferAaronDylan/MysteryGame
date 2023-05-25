@@ -1,7 +1,7 @@
 'use strict'
 
 // Globals
-const user = new User(getUser());
+// const user = new User(getUser());
 const mainBackground = document.querySelector('main');
 const claraDiv = document.getElementById('clara');
 const margueriteDiv = document.getElementById('marguerite');
@@ -23,6 +23,22 @@ const accuseJonathan = document.getElementById('accuseJonathan');
 const accuseWallace = document.getElementById('accuseWallace');
 const accuseLeonard = document.getElementById('accuseLeonard');
 
+let user;
+
+
+
+
+// Pull user info from local storage
+function getUser() {
+  let retrievedUser = localStorage.getItem('currentUser');
+  let parsedUser = JSON.parse(retrievedUser);
+  return parsedUser;
+
+}
+
+// pull user from local storage on each page load
+user = new User(getUser());
+
 let clara = user.Clara;
 let marguerite = user.Marguerite;
 let alexander = user.Alexander;
@@ -31,12 +47,25 @@ let wallace = user.Wallace;
 let leonard = user.Leonard;
 let guesses = 3;
 
-claraDiv.addEventListener('click', claraClick);
-margueriteDiv.addEventListener('click', margueriteClick);
-alexanderDiv.addEventListener('click', alexanderClick);
-jonathanDiv.addEventListener('click', jonathanClick);
-wallaceDiv.addEventListener('click', wallaceClick);
-leonardDiv.addEventListener('click', leonardClick);
+if (user.Clara === false){
+  claraDiv.addEventListener('click', claraClick)
+}
+if (user.Marguerite === false) {
+  margueriteDiv.addEventListener('click', margueriteClick)
+}
+if (user.Alexander === false) {
+  alexanderDiv.addEventListener('click', alexanderClick)
+}
+if (user.Jonathan === false) {
+  jonathanDiv.addEventListener('click', jonathanClick)
+}
+if (user.Wallace === false) {
+  wallaceDiv.addEventListener('click', wallaceClick)
+}
+if (user.Leonard === false) {
+  leonardDiv.addEventListener('click', leonardClick)
+}
+
 accuseClara.addEventListener('click', claraAccusation);
 accuseMarguerite.addEventListener('click', margueriteAccusation);
 accuseAlexander.addEventListener('click', alexanderAccusation);
@@ -65,8 +94,6 @@ function User(user){
   this.jonathanAlibi = user.jonathanAlibi;
   this.wallaceEvidence = user.wallaceEvidence;
   this.wallaceAlibi = user.wallaceAlibi;
-  this.leonardEvidence = user.leonardEvidence;
-  this.leonardAlibi = user.leonardAlibi;
 }
 
 User.prototype.updateLocalStorage = function() {
@@ -76,13 +103,7 @@ User.prototype.updateLocalStorage = function() {
 
 };
 
-// Pull user info from local storage
-function getUser() {
-  let retrievedUser = localStorage.getItem('currentUser');
-  let parsedUser = JSON.parse(retrievedUser);
-  return parsedUser;
 
-}
 
 // Character click transitions
 function hideImages(except) {
@@ -270,11 +291,10 @@ function leonardClick() {
     detectiveDiv.classList.remove('hidden');
     assistantDiv.classList.remove('hidden');
     playerSpeechElement.classList.remove('hidden');
-    evidence.classList.remove('hidden');
     leonard = true;
-    askForAlibiButton.addEventListener('click', alibiClick);
-    searchForEvidenceButton.addEventListener('click', evidenceClick);
     accuseDiv.classList.add('hidden');
+    displayConversation(['Unfortunately Leonard is not available for an interview.  It looks like we will need to keep investigating elsewhere...']);
+    user.Leonard = true;
   } else {
     while(playerSpeechElement.firstChild) {
       playerSpeechElement.removeChild(playerSpeechElement.firstChild)
@@ -285,12 +305,11 @@ function leonardClick() {
     detectiveDiv.classList.add('hidden');
     assistantDiv.classList.add('hidden');
     playerSpeechElement.classList.add('hidden');
-    evidence.classList.add('hidden');
     leonardDiv.removeEventListener('click', leonardClick);
-    askForAlibiButton.addEventListener('click', alibiClick);
-    searchForEvidenceButton.addEventListener('click', evidenceClick);
     accuseDiv.classList.remove('hidden');
+    evidence.classList.add('hidden');
     leonard = false;
+    user.updateLocalStorage();
   }
 }
 
@@ -516,8 +535,6 @@ function leonardAccusation() {
 
   // Displays the conversation based on the question asked
 function displayConversation(conversation) {
-  playerSpeechElement.textContent = '';
-  characterSpeechElement.textContent = '';
 
   let index = 0;
 
