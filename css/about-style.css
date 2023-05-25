@@ -2,6 +2,16 @@
   box-sizing: border-box;
 }
 
+.frame-one {
+  size: 20px;
+}
+
+body {
+  background-image: url("../img/airship 2.png");
+  background-size: cover;
+  /* background-color: rgb(5, 52, 32); */
+} 
+
 .header{
   position: fixed;
   top:0; left: 0; right: 0;
@@ -18,11 +28,32 @@
 .header h1 {
   text-align: center;
   flex-grow: 1;
+  /* MAY25 */
+  font-family: 'Limelight', cursive;
+  font-size: 40px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  padding-top: 20px;
+  /* color:#fff */
 }
 
-.header nav {
-  margin-left:auto;
+.back-game {
+  padding: 10px 20px;
+  background-color: #b62e2e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-top:25%;
+  margin-bottom:10%;
+  cursor: pointer;
+  text-align:center;
+  align-self:center;
+  text-decoration: none;
+
 }
+
 
 main {
   width: 80%;
@@ -39,18 +70,84 @@ main {
   grid-area: 1 / 1 / 2 / 3;
   display: flex;
   margin-top: 50px;
+  
 }
+
+#aaron h2 {
+font-family: 'Limelight', cursive;
+font-size: 25px;
+padding-bottom: 20px;
+color:#ffffff;
+}
+
+
+#aaron p {
+  color:#fff;
+  line-height: 1.5;
+  margin-bottom: 1em;
+  letter-spacing: 1px;
+  font-size: 20px;
+
+  }
+  
+
 
 #dylan {
   grid-area: 2 / 1 / 3 / 3;
   display: flex;
 }
 
+#dylan h2 {
+  font-family: 'Limelight', cursive;
+  font-size: 25px;
+  padding-bottom: 20px;
+  color:#fff;
+  }
+
+
+#dylan p {
+  color:#fff;
+  line-height: 1.5;
+  margin-bottom: 1em;
+  letter-spacing: 1px;
+  font-size: 20px;
+
+  }
+  
+
 #jennifer {
   grid-area: 3 / 1 / 4 / 3;
   display: flex;
 }
 
+
+#jennifer h2 {
+  font-family: 'Limelight', cursive;
+  font-size: 25px;
+  padding-bottom: 20px;
+  color:#fff
+  }
+
+#jennifer p {
+  color:#fff;
+  line-height: 1.5;
+  margin-bottom: 1em;
+  letter-spacing: 1px;
+  font-size: 20px;
+
+  }
+
 article {
   padding: 3rem;
 }
+
+
+
+/* PROILES IMAGES */
+.jennifer-img {
+  width: 200px;
+  height: 250px;
+  }
+
+
+  
