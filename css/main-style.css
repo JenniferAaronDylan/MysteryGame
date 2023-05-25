@@ -45,7 +45,7 @@ main {
   grid-column-gap: 10px;
   grid-row-gap: 50px;
   margin-top: 80px;
-  background-image: url("../img/airship 1.png");
+  background-image: url("../img/airship1.png");
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position:center;
@@ -53,7 +53,7 @@ main {
 }
 
 #accuse {
-  width:95%
+  width:95%;
   height: 80px;
   margin: 3rem auto;
   display: grid;
