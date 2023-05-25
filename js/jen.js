@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 
 // function logClara() {
@@ -72,6 +72,10 @@
 
 
 // openLogBook();
+
+
+
+
 
 
 
