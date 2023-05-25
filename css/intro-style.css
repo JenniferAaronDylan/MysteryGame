@@ -100,16 +100,6 @@ button:focus {
 }
 
 
-
-
-/* .detec-character-image {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-gap: 20px;
-  padding: 20px 100px;
-  justify-content: space-between;
-} */
-
 .detec-image-container {
   display: flex;
   flex-direction: column;
