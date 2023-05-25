@@ -4,18 +4,14 @@ let introText = 'The Story So Far: In the heart of the roaring 20s, a group of d
 
 const typer = document.getElementById('intro');
 let index = 0;
-let delay = 30;
+let delay = 10;
 
-function getRandom() {
-  return Math.floor(Math.random() * 100) + 1;
-}
 
 function type() {
   if (index < introText.length) {
     typer.textContent += introText.charAt(index);
     index ++;
     setTimeout(type, delay);
-    delay = getRandom();
   }
 }
 
@@ -39,8 +35,6 @@ function User(userName){
   this.jonathanAlibi = false;
   this.wallaceEvidence = false;
   this.wallaceAlibi = false;
-  this.leonardEvidence = false;
-  this.leonardAlibi = false;
 }
 
 User.prototype.updateLocalStorage = function() {
@@ -56,22 +50,6 @@ function getUser() {
   return parsedUser;
 
 }
-
-// let nameForm = document.getElementById('nameForm');
-// let nameInput = document.getElementById("nameInput");
-
-
-// function handleSubmit(event) {
-//   event.preventDefault();
-//   let nameInput = document.getElementID('nameInput');
-//   let userName = nameInput.value;
-
-//   localStorage.setItem("userName", );
-
-// }
-
-
-// nameForm.addEventListener('submit', handleSubmit);
 
 
 
@@ -96,6 +74,7 @@ function initializeForm() {
   nameForm.addEventListener("submit", function(event) {
     event.preventDefault();
     userNameInput();
+    this.reset();
   });
 }
 
