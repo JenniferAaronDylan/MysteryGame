@@ -1,7 +1,9 @@
 * {
   box-sizing: border-box;
 }
-
+html {
+  background-color: rgb(211, 179, 98);
+}
 .header{
   position: fixed;
   top:0; left: 0; right: 0;
@@ -9,8 +11,8 @@
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
-  background:#fff;
-  box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+  background: rgb(211, 179, 98);
+  /* box-shadow: 0 .5rem 1rem rgba(0,0,0,.1); */
   padding:1rem;
   height:80px;
 }
@@ -18,13 +20,13 @@
 .header h1 {
   text-align: center;
   flex-grow: 1;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Limelight', cursive;
   color: #b62e2e;
   text-align: center;
   letter-spacing: 3px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   padding: 80px 50px 75px;
-  font-size: 20px;
+  font-size: 40px;
 }
 
 
@@ -277,6 +279,13 @@ footer{
   height: 100%;
   object-fit: cover;
   z-index:1000;
+  transition: transform 0.25s ease-in-out;
+  transform-origin: center top;
+}
+
+#logbookButton:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0px 0px 8px rgba(255, 234, 0, 0.8));
 }
 
 #logbook-1 {
@@ -309,8 +318,8 @@ footer{
 margin: 5px 0;
 padding: 3px;
 color: #0D0D0D;
-font-size: 16px;
-font-family: cursive;
+font-size: 22px;
+font-family: 'Caveat', cursive;
 word-wrap: break-word;
 }
 
@@ -318,8 +327,8 @@ word-wrap: break-word;
   margin: 5px 0;
   padding: 3px;
   color: #0D0D0D;
-  font-size: 16px;
-  font-family: cursive;
+  font-size: 22px;
+  font-family: 'Caveat', cursive;
   word-wrap: break-word;
   }
 
