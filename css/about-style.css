@@ -9,7 +9,7 @@
  
  
  body {
-  background-image: url("../img/airship 2.png");
+  background-image: url("../img/airship2.png");
   background-size: cover;
   /* background-color: rgb(5, 52, 32); */
  }
@@ -173,6 +173,17 @@
   width: 200px;
   height: 250px;
   }
+
+
+  .aaron-img {
+    width: 200px;
+    height: 250px;
+  }
  
+
+  .dylan-img {
+    width: 200px;
+    height: 250px;
+  }
  
  
