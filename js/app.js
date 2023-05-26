@@ -1,6 +1,6 @@
 'use strict';
 
-// Globals
+// DOM Windows
 const mainBackground = document.querySelector('main');
 const claraDiv = document.getElementById('clara');
 const margueriteDiv = document.getElementById('marguerite');
@@ -30,13 +30,14 @@ const noteBook = document.getElementById('open-notebook');
 const logbook1 = document.getElementById("logbook-1");
 const logbook2 = document.getElementById("logbook-2");
 
+// Global Variables
 let user;
 let logOpen = false;
 
 
 
+//Retrieves the user objects from the browser local storage. Then for the parsedUser variable the JSON.parse(retrievedUser), will parse the line in the ‘retrievedUser’  string, which is expected to be in JSON format. Then the ‘returnparsedUser’ returns the ‘parsedUser’ object as the result of the ‘getUser()’ function.
 
-// Pull user info from local storage
 function getUser() {
   let retrievedUser = localStorage.getItem('currentUser');
   let parsedUser = JSON.parse(retrievedUser);
@@ -44,9 +45,11 @@ function getUser() {
 
 }
 
-// pull user from local storage on each page load
+////creates a new instance of the User object and assigns it to the variable user. The getUser() function is called to retrieve a user object from the local storage.
+
 user = new User(getUser());
 
+// more global variables to set up game state.
 let clara = user.Clara;
 let marguerite = user.Marguerite;
 let alexander = user.Alexander;
@@ -54,6 +57,8 @@ let jonathan = user.Jonathan;
 let wallace = user.Wallace;
 let leonard = user.Leonard;
 let guesses = 3;
+
+////This code creates an event listener for each character that does not have a value of true at page initialization.  This allows the program to prevent duplicate conversations if the user reloads the page.
 
 if (user.Clara === false){
   claraDiv.addEventListener('click', claraClick)
@@ -74,7 +79,8 @@ if (user.Leonard === false) {
   leonardDiv.addEventListener('click', leonardClick)
 }
 
-// Reset all values to false so our alibi and evidence functions don't think we are in a cutscene
+// Reset all global values to false so our alibi and evidence functions don't think we are in a cutscene.
+
 clara = false;
 marguerite = false;
 alexander = false;
@@ -82,6 +88,7 @@ jonathan = false;
 wallace = false;
 leonard = false;
 
+////These lines add event listeners to the accuse buttons to the 6 suspect characters in a game.
 accuseClara.addEventListener('click', claraAccusation);
 accuseMarguerite.addEventListener('click', margueriteAccusation);
 accuseAlexander.addEventListener('click', alexanderAccusation);
@@ -111,6 +118,8 @@ function User(user){
   this.wallaceAlibi = user.wallaceAlibi;
 }
 
+////This function allows the current progress of th game to be updated using yhe updateLocalStorage method. It converts the User object instance to a JSON string using JSON.stringify(this) and stores it in the local storage under the key 'currentUser'. 
+
 User.prototype.updateLocalStorage = function() {
 
   let stringifiedUser = JSON.stringify(this);
@@ -118,9 +127,9 @@ User.prototype.updateLocalStorage = function() {
 
 };
 
+//This function is responsible for hiding specific images or image containers in the main section of the document, except for the image container with the specified argument(except). It takes one parameter except to determine which image container should not be hidden.
+//const imageContainers = document.querySelectorAll('main > div.base-state');: This line selects all <div> elements that are direct children of the <main> element and have a class of 'base-state'. It returns a NodeList containing these image containers.
 
-
-// Character click transitions
 function hideImages(except) {
   const imageContainers = document.querySelectorAll('main > div.base-state');
   imageContainers.forEach((container) => {
@@ -130,6 +139,8 @@ function hideImages(except) {
   });
 }
 
+//imageContainers.forEach((container) => { ... }): This line iterates over each image container in the imageContainers NodeList using the forEach method and removes the class list of hidden which re-renders them to the page.
+
 function revertChanges() {
   // Show all hidden images
   const imageContainers = document.querySelectorAll('main > div');
@@ -138,10 +149,15 @@ function revertChanges() {
   });
 }
 
+// This function is responsible for hiding logbook sections on the main page.
 function hideLogText() {
   logbook1.classList.add('hidden');
   logbook2.classList.add('hidden');
 }
+
+//These character click functions handle the transition cutscenes resulting from the user clicking on an individual character.  First the function checks to see if we are already in a cutscene via the character name === true/false.  If we are not in a cutscene, it changes the background, moves the grid area where the character is rendered.  Hides all other main characters via the hideImages(), unhides the detectives, unhides the conversation window, unhides the alibi and evidence buttons, resets the character global value to true so the program knows we are in a cutscene, and adds event listeners for the alibi and evidence conversation buttons.
+// If we are already in a cutscene, the click reverses all the changes listed above
+
 
 function claraClick() {
   if (clara === false) {
@@ -204,7 +220,7 @@ function margueriteClick() {
     askForAlibiButton.addEventListener('click', alibiClick);
     searchForEvidenceButton.addEventListener('click', evidenceClick);
     accuseDiv.classList.remove('hidden');
-    hideLogText()
+    hideLogText();
     marguerite = false;
   }
 }
@@ -339,6 +355,12 @@ function leonardClick() {
   }
 }
 
+//function handles the process of asking for an alibi from the selected character, displaying their alibi conversation, and updating the user's progress in the game.
+//It removes the event listeners for the "Ask for Alibi" button and the "Search for Evidence" button, so they won't trigger their respective functions anymore
+//It checks which character is currently selected (Clara, Marguerite, Alexander, Jonathan, or Wallace) by checking the corresponding global variables (clara, marguerite, alexander, jonathan, wallace).
+//Based on the selected character, it displays the alibi conversation for that character and updates the user's alibi and character status accordingly.
+//Finally, it updates the user's information in the local storage.
+
 function alibiClick() {
   askForAlibiButton.removeEventListener('click', alibiClick);
   searchForEvidenceButton.removeEventListener('click', evidenceClick);
@@ -369,6 +391,14 @@ function alibiClick() {
     user.updateLocalStorage();
   } 
 }
+
+////the function handles the process of searching for evidence from the selected character, displaying their evidence conversation, and updating the user's progress in the game.
+//It removes the event listeners for the "Ask for Alibi" button and the "Search for Evidence" button...
+//It checks which character is currently selected (Clara, Marguerite, Alexander, Jonathan, or Wallace) by checking the corresponding variables.
+//Based on the selected character, it displays the evidence conversation for that character, showing additional evidence related to the ongoing investigation.
+//It updates the user's evidence information by assigning the additional evidence to the corresponding user properties.
+//Finally, it updates the user's information in the local storage.
+
 
 function evidenceClick() {
   askForAlibiButton.removeEventListener('click', alibiClick);
@@ -401,6 +431,18 @@ function evidenceClick() {
   }
 
 }
+
+// this code allows the player to make guesses and receiving feedback based on those guesses. If the player's guess is incorrect, this function is triggered to display a message indicating the remaining number of guesses they have.
+//if the variable guesses is not equal to 0. This condition indicates that there are still guesses remaining. Inside the if statement, there is a while loop that iterates as long as there is a first child element in the playerSpeechElement.
+//Within the while loop, the code removes the first child element from the playerSpeechElement by using the removeChild() method.
+//After removing all the child elements from playerSpeechElement, the code updates the mainBackground style.
+//The character being accused element's 'hidden' class is removed, making it visible.
+//The playerSpeechElement element's 'hidden' class is removed, making it visible.
+//A new h2 element is created and assigned to the variable wrongGuess.
+//The innerText property of wrongGuess is set to a string that says "Sorry, you got it wrong. You have X guesses left." The value of X is determined by subtracting 1 from the current value of guesses.
+//The wrongGuess element is appended as a child to the playerSpeechElement.
+//The displayConversation() function is called, passing character.accusationExplanation/
+//Finally, the guesses variable is decremented by 1.
 
 function claraAccusation() {
   if (guesses !== 0){
@@ -508,70 +550,6 @@ function leonardAccusation() {
     displayConversation(leonardVanDyke.accusationExplanation);
     guesses --;
   }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // Displays the conversation based on the question asked
-function displayConversation(conversation) {
-
-  let index = 0;
-
-  function displayNextLine() {
-    if (index < conversation.length) {
-      if (index % 2 === 0) {
-        playerSpeechElement.textContent += conversation[index];
-      } else {
-        characterSpeechElement.textContent += conversation[index];
-      }
-      index++;
-    } else {
-      playerSpeechElement.textContent = playerSpeech;
-      characterSpeechElement.textContent = characterSpeech;
-    }
-  }
-  displayNextLine();
 }
 
 
@@ -833,7 +811,29 @@ const leonardVanDyke = {
   accusationExplanation: ['Ladies and gentlemen, esteemed guests, and my ever-vigilant assistant, Fitzgerald. As we gather here to reflect on the perplexing case of Leonard Van Dyke\'s disappearance, I am compelled to share with you the depths of the enigma we have encountered. Throughout our investigation, we meticulously examined every aspect of the evidence, delving into the motives and alibis of each suspect. Yet, despite our efforts, a fog of uncertainty lingers. One crucial piece of information has come to light. It appears that the doctor aboard this zeppelin, in a rather peculiar act, concealed the fact that Leonard Van Dyke\'s body had mysteriously vanished in the early hours of the morning. This revelation raises the stakes and deepens the intrigue surrounding this case. Moreover, the painting that Leonard cherished so dearly has vanished without a trace, echoing his own disappearance. How could such valuable artifacts vanish from within these walls?','As we sifted through the clues, we encountered contradictions and inconsistencies that defied easy explanation. Clara Deveraux\'s artistic resentment, Marguerite Fontaine\'s financial troubles, Alexander Petrov\'s diplomatic disputes, Jonathan Van Dyke\'s desperate intentions—all, and Capt. Wallace\'s grudge for a tragedy caused by Leonard himself. All intriguing, yet none fully fitting the puzzle. In light of these perplexities, we must consider the possibility that Leonard Van Dyke\'s disappearance was not a result of happenstance. Instead, it points to a meticulously crafted plan, masterminded by a figure lurking in the shadows. The orchestration of this elaborate scheme leaves us questioning the true nature of events. The evidence before us does not align seamlessly. It seems we are facing an enigma that reaches beyond the confines of a simple murder. A shadowy web of manipulation and deception has been woven, obscuring the truth and leaving us with more questions than answers. Let us embark on this next phase of our investigation with unwavering determination, for the road ahead promises greater challenges and revelations. The truth may be elusive, but we shall not rest until we have unraveled this intricate tapestry of deception and have found Mr. Leonard Van Dyke.'],
 };
 
-// Displays the conversation based on the question asked
+// this code provides a mechanism to display a conversation between a player and a character in a sequential manner. The conversation is stored in an array, and each line of conversation is displayed either as player speech or character speech based on the index.
+//The displayNextLine() function is called immediately after initializing the index variable. This ensures that the conversation starts displaying.
+//Inside the displayNextLine() function, there is an if statement that checks if the index is less than the length of the conversation array. This condition ensures that there are still lines of conversation left to display.
+//If there are more lines of conversation to display, the code proceeds with the following steps:
+//The conversation is displayed as an index in the charatcer object and move in incremented by 1 to move to the next line of conversation.
+//A local variable charIndex is declared and initialized with 0. This variable will be used to keep track of the current index of characters in the line string.
+//The typeInterval variable is set to 10ms.It controls the speed at which the text is displayed.
+// The typeWriter variable is declared and assigned the value returned by the setInterval() function. This function executes the provided callback function repeatedly with a fixed time delay between each call.
+// The callback function inside setInterval() checks if charIndex is less than the length of the line string. If there are more characters to display, it proceeds with the following steps:
+//i. The current character from the line string, determined by the current charIndex, is appended to the textContent property of the newLineElement. This simulates the effect of typing one character at a time.
+
+
+//ii. The charIndex is incremented by 1 to move to the next character.
+
+
+//iii. Once all characters in the line have been displayed, the typeWriter interval is cleared using clearInterval(typeWriter).
+
+
+//iv. A delay of 1 second is set using setTimeout() before calling the displayNextLine() function again. This delay provides a pause before displaying the next line of conversation.
+//Once all lines of conversation have been displayed, the function execution ends.
+
+
+
 
 function displayConversation(conversation) {
 
@@ -856,12 +856,18 @@ function displayConversation(conversation) {
           charIndex++;
         } else {
           clearInterval(typeWriter);
-          setTimeout(displayNextLine, 1000); // Delay of 1 seconds before displaying the next line
+          setTimeout(displayNextLine, 1000); // Delay of 1 seconds before displaying the next line.  Set timeout functionality help provided by ChatGPT
         }
       }, typeInterval);
     }
   }
 }
+
+// logClara() function: The function starts with a while loop that iterates as long as there is a first child element in the claraLog element.
+//claraLog.firstChild retrieves the first child element of the claraLog element.
+//claraLog.removeChild(claraLog.firstChild) removes the first child element from the claraLog element. This loop effectively clears the content of claraLog by removing all its child elements.
+//Two new paragraph elements (<p>) are created using the document.createElement('p') method and assigned to the evidence and alibi variables.
+
 
 // Logbook Functions
 function logClara() {
@@ -948,7 +954,7 @@ function logJonathon() {
     jonLog.appendChild(paragraph);
   }
 }
-// logJonathon();
+
 function logWallace() {
   while(wallaceLog.firstChild) {
     wallaceLog.removeChild(wallaceLog.firstChild);
@@ -969,6 +975,21 @@ function logWallace() {
     wallaceLog.appendChild(paragraph);
   }
 }
+
+//Code in openLogBook() function:
+
+
+//The function checks if the logOpen variable is false.
+//If it is false, the code proceeds with the following steps:
+//The 'hidden' class is removed from the logbook1 and logbook2 elements, making them visible.
+//The logClara() function is called to populate the Clara-specific log.
+//Several other log functions (logMarguerite(), logAlexander(), logJonathon(), logWallace()) are called, presumably to populate logs for other characters.
+//The 'hidden' class is removed from the noteBook element, making it visible.
+//The logOpen variable is set to true.
+//If the logOpen variable is already true, the code proceeds with the following steps:
+//The logOpen variable is set to false.
+//The 'hidden' class is added to the logbook1, logbook2, and noteBook elements, making them hidden.
+
 
 function openLogBook() {
   if (logOpen === false) {
