@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main-style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Ubuntu&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+  </style>
+  <title>Midnight Marauder</title>
+</head>
+<body>
+  <header class="header">
+    <h1>Midnight Marauder - Murder on the Sky Empress</h1>
+    <nav>
+      <a href="about.html">About Our Team</a>
+    </nav>
+  </header>
+  <main>
+    <div class="hidden" id="playerSpeech">
+    </div>
+    <div id="clara" class="base-state">
+      <img src="img/clara.png" alt="">
+    </div>
+    <div id ="marguerite" class="base-state">
+      <img src="img/marguerite.png" alt="">
+
+    </div>
+    <div id="alexander" class="base-state">
+      <img src="img/alexander.png" alt="">
+
+    </div>
+    <div id="jonathan" class="base-state">
+      <img src="img/jonathan.png" alt="">
+
+    </div>
+    <div id="wallace" class="base-state">
+      <img src="img/wallace.png" alt="">
+
+    </div>
+    <div id="leonard" class="base-state">
+      <img src="img/leonard.png" alt="">
+
+    </div>
+    <div id="detective" class="hidden">
+      <img src="img/detective1.png" alt="">
+    </div>
+    <div id="assistant" class="hidden">
+      <img src="img/detective2.png" alt="">
+    </div>
+    <div id="evidence" class="hidden">
+      <button id="askForAlibi">Ask For Alibi</button>
+      <button id="searchForEvidence">Search For Evidence</button>
+    </div>
+    <div id="logbook-container">
+      <button id="logbookButton" onclick="openLogBook()">
+        <img src="img/redNotebook.png" alt="">
+      </button>
+      <h3 id="LogText">Open Logbook</h3>
+    </div>
+    <div class="hidden" id="logbook-1">
+      <h3>Evidence and Alibi of Characters:</h3>
+      <article id="claraLogBook">
+      </article>
+      <article id="margLogBook">
+      </article>
+      <article id="alexLogBook">
+      </article>
+    </div>
+    <div class="hidden" id="logbook-2">
+      <article id="jonLogBook">
+      </article>
+      <article id="wallaceLogBook">
+      </article>
+    </div>
+    <img class="hidden" id="open-notebook" src="img/openNotebook.png" alt="">
+     <!-- LOGBOOK END -->
+    </div>
+  </main>
+  <section id="accuse">
+    <button id="accuseClara">Accuse Clara</button><button id="accuseMarguerite">Accuse Marguerite</button><button id="accuseAlexander">Accuse Alexander</button><button id="accuseJonathan">Accuse Jonathan</button><button id=accuseWallace>Accuse Wallace</button><button id="accuseLeonard">Accuse Leonard</button>
+  </section>
+  <script src="js/app.js"></script>
+</body>
+</html>
