@@ -34,22 +34,14 @@ h1 {
   border-radius: 10px;
   max-width: 400px;
   margin: 0 auto;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
 }
-/* #accuse button {
-  width:50%;
-  height: 50px;
-  padding: 10px 20px;
-  background-color: #b62e2e;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  align-self: center;
-  justify-self: center;
-  text-align:center;
-} */
 
+#nameInput {
+  font-size: 18px;
+  width:50%;
+}
 
 
 button {
