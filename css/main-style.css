@@ -32,7 +32,22 @@ html {
 
 .header nav {
   margin-left:auto;
-  
+  padding: 10px 20px;
+  background-color: #b62e2e;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align:center;
+  align-self:center;
+  text-decoration: none; 
+}
+
+.header nav a {
+  color:#fff;
+  text-decoration: none;
 }
 
 main {
@@ -115,12 +130,20 @@ main {
   justify-content:center;
   overflow: auto;
   padding:10px;
+  font-family: 'Caveat', cursive;
+  word-wrap: break-word;
 }
 
 #playerSpeech > p {
   align-self: flex-start;
   justify-self: center;
-  font-size: small;
+  font-size: 20px;
+}
+
+#playerSpeech > h2 {
+  align-self: flex-start;
+  justify-self: center;
+  font-size: 24px;
 }
 
 
@@ -318,7 +341,7 @@ footer{
 margin: 5px 0;
 padding: 3px;
 color: #0D0D0D;
-font-size: 22px;
+font-size: 20px;
 font-family: 'Caveat', cursive;
 word-wrap: break-word;
 }
@@ -327,17 +350,17 @@ word-wrap: break-word;
   margin: 5px 0;
   padding: 3px;
   color: #0D0D0D;
-  font-size: 22px;
+  font-size: 19px;
   font-family: 'Caveat', cursive;
   word-wrap: break-word;
   }
 
 #LogText {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Limelight', cursive;
   color: white;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  font-size: 16px;
+  font-size: 19px;
   margin-left:1vw;
 }
 

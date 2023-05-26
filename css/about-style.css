@@ -11,7 +11,6 @@
  body {
   background-image: url("../img/airship2.png");
   background-size: cover;
-  /* background-color: rgb(5, 52, 32); */
  }
  
  
@@ -32,14 +31,12 @@
  .header h1 {
   text-align: center;
   flex-grow: 1;
-  /* MAY25 */
   font-family: 'Limelight', cursive;
   font-size: 50px;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 30px;
   padding-top: 20px;
-  /* color:#fff */
  }
  
  
@@ -48,6 +45,7 @@
   background-color: #b62e2e;
   color: #fff;
   border: none;
+  cursor: pointer;
   border-radius: 8px;
   font-size: 16px;
   margin-top:25%;
@@ -55,9 +53,7 @@
   cursor: pointer;
   text-align:center;
   align-self:center;
-  text-decoration: none;
- 
- 
+  text-decoration: none; 
  }
  
  
@@ -98,8 +94,6 @@
   margin-bottom: 1em;
   letter-spacing: 1px;
   font-size: 20px;
- 
- 
   }
  
  
@@ -119,16 +113,12 @@
   }
  
  
- 
- 
  #dylan p {
   color:#fff;
   line-height: 1.5;
   margin-bottom: 1em;
   letter-spacing: 1px;
-  font-size: 20px;
- 
- 
+  font-size: 20px; 
   }
  
  
@@ -137,53 +127,43 @@
   display: flex;
  }
  
- 
- 
- 
  #jennifer h2 {
   font-family: 'Limelight', cursive;
   font-size: 25px;
   padding-bottom: 20px;
   color:#fff
   }
- 
- 
+  
  #jennifer p {
   color:#fff;
   line-height: 1.5;
   margin-bottom: 1em;
   letter-spacing: 1px;
   font-size: 20px;
- 
- 
+
   }
- 
  
  article {
   padding: 3rem;
  }
  
  
- 
- 
- 
- 
  /* PROILES IMAGES */
  .jennifer-img {
-  width: 200px;
-  height: 250px;
+  width: auto;
+  max-height: 250px;
   }
 
 
   .aaron-img {
-    width: 200px;
-    height: 250px;
+    width: auto;
+    max-height: 250px;
   }
  
 
   .dylan-img {
-    width: 200px;
-    height: 250px;
+    width: auto;
+    max-height: 250px;
   }
  
  
