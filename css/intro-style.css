@@ -43,6 +43,7 @@ h2 {
   text-align: center;
   letter-spacing: 3px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 20px 0;
 }
 
 h3 {
@@ -81,6 +82,7 @@ label {
   display: block;
   margin-bottom: 10px;
   font-family: 'Cinzel Decorative', serif;
+  font-size: 18px;
   color:#b62e2e;
 }
 
@@ -111,7 +113,7 @@ input[type="text"] {
   border-radius: 8px;
   font-size: 16px;
   color: #6b0505;
-  background-color: #f9f6f2; /* Soft cream color */
+  background-color: #f9f6f2;
 }
 
 input[type="text"]::placeholder {
@@ -122,7 +124,7 @@ input[type="text"]::placeholder {
 input[type="text"]:focus {
   border-color: #b62e2e;
   outline: none;
-  box-shadow: 0 0 5px rgba(182, 46, 46, 0.4); /* Adds a subtle glow when input is focused */
+  box-shadow: 0 0 5px rgba(182, 46, 46, 0.4); 
 }
 
 button, button[type="submit"], button.start-button {
@@ -161,15 +163,83 @@ button.start-button a {
 
 
 
-
+/* medium sized screens */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
   .image-container, .detec-image-container {
       width: 48%; 
   }
+
+  .story-paragraph {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 18px;
+    color: #6b0505;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
+  
+  h1{
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    color: #b62e2e;
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+  }
+  
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    color: #b62e2e;
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  h3 {
+    font-size: 20px;
+    font-family: 'Cinzel Decorative', serif;
+    color:#fff;
+  }
 }
 
+/* large screens */
 @media screen and (min-width: 1024px) {
   .image-container, .detec-image-container {
       width: 23%; 
+  }
+
+  .story-paragraph {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 22px;
+    color: #6b0505;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+  }
+  
+  h1{
+    font-family: 'Playfair Display', serif;
+    font-size: 54px;
+    color: #b62e2e;
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+  }
+  
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    color: #b62e2e;
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  h3 {
+    font-size: 24px;
+    font-family: 'Cinzel Decorative', serif;
+    color:#fff;
   }
 }
