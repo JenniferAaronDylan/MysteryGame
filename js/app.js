@@ -127,6 +127,15 @@ User.prototype.updateLocalStorage = function() {
 
 };
 
+function toggleMenu() {
+  const menu = document.querySelector(".menu");
+  if (menu.style.display === "none" || menu.style.display === "") {
+    menu.style.display = "block";
+  } else {
+    menu.style.display = "none";
+  }
+}
+
 //This function is responsible for hiding specific images or image containers in the main section of the document, except for the image container with the specified argument(except). It takes one parameter except to determine which image container should not be hidden.
 //const imageContainers = document.querySelectorAll('main > div.base-state');: This line selects all <div> elements that are direct children of the <main> element and have a class of 'base-state'. It returns a NodeList containing these image containers.
 

@@ -50,6 +50,7 @@ h3 {
   font-size: 18px;
   font-family: 'Cinzel Decorative', serif;
   color:#fff;
+  margin: 10px;
 }
 
 .character-image {
@@ -201,6 +202,7 @@ button.start-button a {
     font-size: 20px;
     font-family: 'Cinzel Decorative', serif;
     color:#fff;
+    margin: 10px;
   }
 }
 
@@ -241,5 +243,6 @@ button.start-button a {
     font-size: 24px;
     font-family: 'Cinzel Decorative', serif;
     color:#fff;
+    margin: 10px;
   }
 }

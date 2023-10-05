@@ -8,7 +8,7 @@ let introText = 'The Story So Far: In the heart of the roaring 20s, a group of d
 
 const typer = document.getElementById('intro');
 let index = 0;
-let delay = 10;
+let delay = 20;
 
 function type() {
   if (index < introText.length) {
