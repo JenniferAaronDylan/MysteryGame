@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +13,11 @@
   </style>
   <title>Midnight Marauder</title>
 </head>
+
 <body>
+  <div id="rotate-device">
+    <p>Please rotate your device to landscape mode for the best experience.</p>
+  </div>
   <header class="header">
     <h1>Midnight Marauder - Murder on the Sky Empress</h1>
     <nav>
@@ -23,33 +28,33 @@
     <div class="hidden" id="playerSpeech">
     </div>
     <div id="clara" class="base-state">
-      <img src="img/clara.png" alt="">
+      <img src="img/clara.png" alt="Portrait of Clara">
     </div>
-    <div id ="marguerite" class="base-state">
-      <img src="img/marguerite.png" alt="">
+    <div id="marguerite" class="base-state">
+      <img src="img/marguerite.png" alt="Portrait of Marguerite">
 
     </div>
     <div id="alexander" class="base-state">
-      <img src="img/alexander.png" alt="">
+      <img src="img/alexander.png" alt="Portrait of Alexander">
 
     </div>
     <div id="jonathan" class="base-state">
-      <img src="img/jonathan.png" alt="">
+      <img src="img/jonathan.png" alt="Portrait of Jonathan">
 
     </div>
     <div id="wallace" class="base-state">
-      <img src="img/wallace.png" alt="">
+      <img src="img/wallace.png" alt="Portrait of Wallace">
 
     </div>
     <div id="leonard" class="base-state">
-      <img src="img/leonard.png" alt="">
+      <img src="img/leonard.png" alt="Portrait of Leonard">
 
     </div>
     <div id="detective" class="hidden">
-      <img src="img/detective1.png" alt="">
+      <img src="img/detective1.png" alt="Portrait of Detective One">
     </div>
     <div id="assistant" class="hidden">
-      <img src="img/detective2.png" alt="">
+      <img src="img/detective2.png" alt="Portrait of Detective Two">
     </div>
     <div id="evidence" class="hidden">
       <button id="askForAlibi">Ask For Alibi</button>
@@ -76,13 +81,16 @@
       <article id="wallaceLogBook">
       </article>
     </div>
-    <img class="hidden" id="open-notebook" src="img/openNotebook.png" alt="">
-     <!-- LOGBOOK END -->
+    <div class="hidden" id="open-notebook"></div>
+    <!-- LOGBOOK END -->
     </div>
   </main>
   <section id="accuse">
-    <button id="accuseClara">Accuse Clara</button><button id="accuseMarguerite">Accuse Marguerite</button><button id="accuseAlexander">Accuse Alexander</button><button id="accuseJonathan">Accuse Jonathan</button><button id=accuseWallace>Accuse Wallace</button><button id="accuseLeonard">Accuse Leonard</button>
+    <button id="accuseClara">Accuse Clara</button><button id="accuseMarguerite">Accuse Marguerite</button><button
+      id="accuseAlexander">Accuse Alexander</button><button id="accuseJonathan">Accuse Jonathan</button><button
+      id=accuseWallace>Accuse Wallace</button><button id="accuseLeonard">Accuse Leonard</button>
   </section>
   <script src="js/app.js"></script>
 </body>
+
 </html>

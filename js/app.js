@@ -118,6 +118,7 @@ function User(user){
   this.wallaceAlibi = user.wallaceAlibi;
 }
 
+
 ////This function allows the current progress of th game to be updated using yhe updateLocalStorage method. It converts the User object instance to a JSON string using JSON.stringify(this) and stores it in the local storage under the key 'currentUser'. 
 
 User.prototype.updateLocalStorage = function() {
